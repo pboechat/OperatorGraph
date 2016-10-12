@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<ModelRootPath
+		path="models/"
+	/>
+	
+	<TextureRootPath
+		path="textures/"
+	/>
+	
+	<!-- COLUMN1 (x50) -->
+	<InstancedTriangleMesh
+		index="0"
+		maxNumElements="25600"
+		type="0"
+		shape="Box"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- COLUMN2 (x50) -->
+	<InstancedTriangleMesh
+		index="1"
+		maxNumElements="25600"
+		type="1"
+		modelPath="taper.obj"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+	
+	<!-- COLUMN3 (x50) -->
+	<InstancedTriangleMesh
+		index="2"
+		maxNumElements="25600"
+		type="1"
+		modelPath="semicircle1.obj"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+	
+	<!-- HEADING (x4) -->
+	<InstancedTriangleMesh
+		index="3"
+		maxNumElements="2048"
+		type="0"
+		shape="Box"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+	
+	<!-- ROOF (x2) -->
+	<InstancedTriangleMesh
+		index="4"
+		maxNumElements="1024"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WALL1 (x2000) -->
+	<InstancedTriangleMesh
+		index="5"
+		maxNumElements="400000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WALL2 (x2000) -->
+	<InstancedTriangleMesh
+		index="6"
+		maxNumElements="400000"
+		type="0"
+		shape="Box"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+	
+	<!-- WALL3 (x2000) -->
+	<InstancedTriangleMesh
+		index="7"
+		maxNumElements="400000"
+		type="1"
+		modelPath="semicircle2.obj"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WINDOW (x2000) -->
+	<InstancedTriangleMesh
+		index="8"
+		maxNumElements="400000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+</Configuration>

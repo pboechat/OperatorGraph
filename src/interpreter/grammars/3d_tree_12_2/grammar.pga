@@ -1,0 +1,41 @@
+axiom Box W;
+
+terminal Trunk (1,0);
+terminal Leaf (1,1);
+
+// ---
+
+W = Scale(16, 16, 16) Replicate() {
+    Scale(-1,-4,-1) Trunk | 
+    Translate(0,Exp(ShapeSize(Y)*2.5),0) A
+};
+
+// 16 iterations
+//A = IfSizeLess(X, 1.5) { 
+// 12 iterations
+A = IfSizeLess(X, 3) { 
+// 8 iterations
+//A = IfSizeLess(X, 6) { 
+    C | 
+    Replicate() {
+        Translate(Exp(ShapeSize(Y)*-0.1623714549902896798444230926647),Exp(ShapeSize(Y)*-0.02709883632588052953274049482906),0)
+        Rotate(0,94.74,18.95) 
+        Scale(-0.85,-1,-0.85) B |
+        Translate(Exp(ShapeSize(Y)*0.1623714549902896798444230926647),Exp(ShapeSize(Y)*-0.02709883632588052953274049482906),0)
+        Rotate(0,132.63,-18.95) 
+        Scale(-0.85,-1,-0.85)
+        B
+    }
+
+};
+
+B = Replicate() {
+    Trunk |
+    Translate(0,ShapeSize(Y),0) A
+};
+
+C = Replicate() {
+        Rotate(0,90,0) Translate(0,Exp(ShapeSize(Y)*0.5),0) Rotate(0,0,45) Translate(-11.313708498984760390413509793678,4.6862915010152396095864902063224,0) Scale(32,32,32) Leaf |
+        Rotate(0,135,0) Translate(0,Exp(ShapeSize(Y)*0.5),0) Rotate(0,0,45) Translate(-11.313708498984760390413509793678,4.6862915010152396095864902063224,0) Scale(32,32,32) Leaf |
+        Rotate(0,315,0) Translate(0,Exp(ShapeSize(Y)*0.5),0) Rotate(0,0,45) Translate(-11.313708498984760390413509793678,4.6862915010152396095864902063224,0) Scale(32,32,32) Leaf
+};

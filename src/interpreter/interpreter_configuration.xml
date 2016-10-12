@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<ModelRootPath
+		path="assets/models/"
+	/>
+	
+	<TextureRootPath
+		path="assets/textures/"
+	/>
+	
+	<!-- WHITE -->
+	<TriangleMesh
+		index="0"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</TriangleMesh>
+
+	<!-- RED -->
+	<TriangleMesh
+		index="1"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(0.8,0,0,1)" />
+		</Material>
+	</TriangleMesh>
+	
+	<!-- YELLOW -->
+	<TriangleMesh
+		index="2"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(0.8,0.6,0,1)" />
+        </Material>
+    </TriangleMesh>
+	
+	<!-- GREEN -->
+	<TriangleMesh
+		index="3"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(0,0.866,0,1)" />
+        </Material>
+    </TriangleMesh>
+	
+	<!-- BLUE -->
+	<TriangleMesh
+		index="4"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(0,0.6,0,1)" />
+        </Material>
+    </TriangleMesh>
+	
+	<!-- PURPLE -->
+	<TriangleMesh
+		index="5"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(0.6,0.4,1,1)" />
+        </Material>
+    </TriangleMesh>
+	
+	<!-- PINK -->
+	<TriangleMesh
+		index="6"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(1,0.4,1,1)" />
+        </Material>
+    </TriangleMesh>
+	
+	<!-- DARK GREEN -->
+	<TriangleMesh
+		index="7"
+		maxNumVertices="200000"
+		maxNumIndices="300000"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(0,0.793,0,1)" />
+        </Material>
+    </TriangleMesh>
+    
+    <!-- BOX -->
+    <InstancedTriangleMesh
+		index="0"
+		maxNumElements="100000"
+		type="0"
+		shape="Box"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(1,1,1,1)" />
+        </Material>
+    </InstancedTriangleMesh>
+    
+    <!-- QUAD -->
+    <InstancedTriangleMesh
+		index="1"
+		maxNumElements="10000"
+		type="0"
+		shape="Quad"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(1,1,1,1)" />
+        </Material>
+    </InstancedTriangleMesh>
+
+    <!-- TOBLERONE -->
+    <InstancedTriangleMesh
+		index="2"
+		maxNumElements="10000"
+		type="0"
+		shape="DynamicConvexRightPrism"
+		vertices="(0, 0.5), (-0.5, -0.5), (0.5, -0.5)"
+    >
+        <Material type="0">
+            <Attribute name="color0" value="(1,1,1,1)" />
+        </Material>
+    </InstancedTriangleMesh>
+
+    <!-- DYNAMIC TRIANGLE -->
+    <InstancedTriangleMesh
+		index="3"
+		maxNumElements="10000"
+		type="0"
+		shape="DynamicConvexPolygon"
+		vertices="(0, 0.5), (-0.5, -0.5), (0.5, -0.5)"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(1,1,1,1)" />
+        </Material>
+    </InstancedTriangleMesh>
+
+    <!-- SPHERE -->
+    <InstancedTriangleMesh
+		index="4"
+		maxNumElements="10000"
+		type="0"
+		shape="Sphere"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(1,1,1,1)" />
+        </Material>
+    </InstancedTriangleMesh>
+
+</Configuration>

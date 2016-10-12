@@ -1,0 +1,50 @@
+axiom Box W;
+
+terminal Door (1,0);
+terminal FloorDivision (1,1);
+terminal GarageDoor (1,2);
+terminal PorchFront (1,3);
+terminal PorchRoof (1,4);
+terminal Roof (1,5);
+terminal RoofSide (1,6);
+terminal Step (1,7);
+terminal Wall Wall2 (1,8);
+terminal Window (1,9);
+terminal WindowSill (1,10);
+terminal GarageDoorBorder (1,11);
+terminal PorchColumn (1,12);
+
+// ---
+
+W = SubDiv(X) { -1: Left | -1: Middle | -1: Right };
+Left = Translate(0,0,Exp(ShapeSize(Z) * -0.3)) Scale(-1,-1,-0.4) CompSplit() { RoofLeft | Discard() | SubDiv(Y) { 6: GroundFloorFacade | -1: Repeat(Y, 4, ADJUST_TO_FILL) Floor } };
+Middle = Translate(Exp(ShapeSize(X) * -0.5),0,Exp(ShapeSize(Z) * 0.2)) Scale(-2,-1,-0.6) CompSplit() { RoofMiddle | Discard() | SubDiv(Y) { 6: Facade1 | -1: Repeat(Y, 4, ADJUST_TO_FILL) Floor } };
+Floor = SubDiv(Y) { 0.3: FloorDivision1 | -1: Facade1 };
+FloorDivision1 = Extrude(0.1) Translate(0,Exp(ShapeSize(Y) * 0.5),0) FloorDivision;
+Right = Translate(Exp(ShapeSize(X) * -0.2),Exp(ShapeSize(Y) * -0.25),Exp(ShapeSize(Z) * 0.1))Scale(-0.8,-0.5,-0.65) CompSplit() { RoofRight | Discard() | GarageSide };
+RoofLeft = Extrude(3) Rotate(90,0,0) SwapSize(X,Z,Y) Translate(0,Exp(ShapeSize(Y) * 0.35),Exp(ShapeSize(Z) * -0.5)) Scale(-1,-1.7,-1) SetAsDynamicConvexRightPrism((0,0.5),(-0.5,-0.5),(0.5,-0.5)) RoofMass1;
+RoofMiddle = Extrude(3) Rotate(90,90,0) SwapSize(Z,X,Y) Translate(0,0,Exp(ShapeSize(Z) * -0.5)) SetAsDynamicConvexRightPrism((0,0.5),(-0.5,-0.5),(0.5,-0.5)) RoofMass2;
+RoofRight = Extrude(3) Rotate(90,0,0) SwapSize(X,Z,Y) Translate(0,0,Exp(ShapeSize(Z) * -0.5)) SetAsDynamicConvexRightPrism((0,0.5),(-0.5,-0.5),(0.5,-0.5)) RoofMass3;
+RoofMass1 = CompSplit() { RoofSide | RoofSide | If(Exp(ShapeNormal(Y) == -1)) { Discard() | SubDiv(Y) { -0.6: ZRoof | -0.4: Roof } } };
+RoofMass2 = CompSplit() { RoofSide | RoofSide | If(Exp(ShapeNormal(Y) == -1)) { Discard() | ZRoof } };
+RoofMass3 = CompSplit() { RoofSide | RoofSide | If(Exp(ShapeNormal(Y) == -1)) { Discard() | XRoof } };
+GarageSide = If(Exp(ShapeNormal(Z) == -1)) { GarageFrontWall | Wall };
+GarageFrontWall = SubDiv(X) { -1: Wall | 4.5: SubDiv(Y) { 3: GarageDoor1 | -1: Wall } | -1: Wall };
+GarageDoor1 = SubDiv(X) { 0.3: GarageDoorBorder1 | -1: SubDiv(Y) { -1: GarageDoor | 0.3: GarageDoorBorder1 } | 0.3: GarageDoorBorder1 };
+GarageDoorBorder1 = Extrude(0.15) Translate(0,Exp(ShapeSize(Y) * 0.5),0) GarageDoorBorder;
+Facade1 = Repeat(X, 3, ADJUST_TO_FILL) Tile1;
+Tile1 = SubDiv(X) { -1: Wall | 1.4: SubDiv(Y) { 0.75: Wall | 0.3: WindowSill1 | 2.5: Window | -1: Wall } | -1: Wall };
+Facade2 = Repeat(X, 3, ADJUST_TO_FILL) Tile2;
+Tile2 = SubDiv(X) { -1: Wall | 1.4: SubDiv(Y) { 1.5: Wall | 0.3: WindowSill1 | 2.5: Window | -1: Wall } | -1: Wall };
+WindowSill1 = Extrude(0.2) Translate(0,Exp(ShapeSize(Y) * 0.5),0) WindowSill;
+GroundFloorFacade = If(Exp(ShapeNormal(Z) == -1)) { SubDiv(X) { -1: Facade2 | 2: SubDiv(Y) { 1: Stairs1 | 3: Door | 1.2: Porch1 | -1: Wall } | -1: Facade2 } | Facade2 };
+Porch1 = Extrude(0.75) Translate(0,Exp(ShapeSize(Y) * 0.5),0) Rotate(0,0,180) SetAsDynamicConvexRightPrism((0,0.5),(-0.5,-0.5),(0.5,-0.5)) CompSplit() { Rotate(0,180,0) Wall2 | PorchFront | If(Exp(ShapeNormal(Y) == -1)) { PorchBottom | ZRoof } };
+PorchBottom = SubDiv(X) { 0.2: PorchColumn1 | -1: Discard() | 0.2: PorchColumn1 };
+PorchColumn1 = SubDiv(Y) { -1: Discard() | 0.2: PorchColumn2 | -1: Discard() };
+PorchColumn2 = Extrude(3) Translate(0,Exp(3 * 0.5),0) PorchColumn;
+Stairs1 = SubDiv(Y) { -1: Extrude(0.75) Step1 | -1: Extrude(0.5) Step1 };
+Step1 = Translate(0,Exp(ShapeSize(Y) * 0.5),0) Step;
+ZRoof = If(Exp(ShapeNormal(X) < 0)) { LeftRoof | RightRoof };
+XRoof = If(Exp(ShapeNormal(Z) > 0)) { LeftRoof | RightRoof };
+LeftRoof = Translate(0.15,0,0) Scale(Exp(ShapeSize(X) + 0.3),-1,-1) Roof;
+RightRoof = Translate(-0.15,0,0) Scale(Exp(ShapeSize(X) + 0.3),-1,-1) Roof;

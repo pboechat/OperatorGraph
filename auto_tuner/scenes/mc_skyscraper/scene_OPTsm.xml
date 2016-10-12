@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene
+    grammarFile="grammar.pga"
+    templateFile="template.h"
+    outputPath="OPTsm/"
+    gridX="16"
+    gridY="32"
+    itemSize="112"
+    queuesMem="2048"
+    numRuns="100"
+    minNumAxioms="0"
+    maxNumAxioms="512"
+    axiomStep="512"
+    optimization="3"
+    whippletreeTechnique="KERNELS"
+    RSAMPL="1000"
+    runSeed="1213098"
+	analyzerSeed="2430927"
+/>

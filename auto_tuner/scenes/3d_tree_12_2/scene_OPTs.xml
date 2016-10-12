@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene
+    grammarFile="grammar.pga"
+    templateFile="template.h"
+    outputPath="OPTs/"
+    gridX="8"
+    gridY="8"
+    itemSize="112"
+    queuesMem="2048"
+    numRuns="100"
+    minNumAxioms="0"
+    maxNumAxioms="64"
+    axiomStep="64"
+    optimization="2"
+    RSAMPL="1000"
+	analyzerSeed="2430927"
+/>

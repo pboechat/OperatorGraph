@@ -1,0 +1,27 @@
+axiom Box SpaceShip;
+
+terminal Cube (1,0);
+terminal Cylinder (1,1);
+terminal Taper (1,2);
+
+SpaceShip = Replicate() { M1 | M2 | M3 };
+
+M1 = Replicate() { Cube | Rotate(0,0,180) M1_S | M1_S };
+M1_S = Translate(7.5,0,1.5) Scale(10,1,10.01) SubDiv(X) { 1.43: Scale(1.43,1.43,4) Translate(0,0,-2) Cube | 1.43: Scale(1.43,1.43,7) Translate(0,0,-0.5) Cylinder | 4.29: Scale(4.29,1.43,3) Translate(0,0,2) Cube | 2.86: Scale(2.86,2.86,9) Translate(0,0,0.5) Cylinder };
+
+M2 = Translate(0,0,8) Replicate() { Cylinder | Rotate(0,0,180) M2_S | M2_S | M2_T };
+M2_S = Replicate() { Translate(2.75,0,0) Scale(0.5,0.5,4) Cylinder | Translate(4.25,0,1.6) Scale(2.5,2.5,6.4) Cylinder };
+M2_T = Translate(0,3.333,0) Scale(2.5,2.5,6.4) Top;
+
+Top = IfSizeLess(Y, 0.5) {
+    Discard() |
+    SubDiv(Y) {
+        0.5: Cube |
+        -1: Scale(-0.8,-1,-0.8) Top
+    }
+};
+
+M3 = Translate(0,0,16) Replicate() { Translate(0,0,-0.5) Scale(3,3,7) M3_B | Translate(0,0,4.5) M3_F };
+M3_B = SubDiv(X) { -1: M3_B2 | -1: M3_B2 };
+M3_B2 = SubDiv(Y) { -1: Cylinder | -1: Cylinder };
+M3_F = Scale(3,3,3) Taper;

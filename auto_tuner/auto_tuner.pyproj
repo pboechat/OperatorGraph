@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82858122-6e18-41af-b8a3-7c1f46135408}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>AutoTuner.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>scenes\3d_tree_4_3\</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+    <InterpreterArguments>
+    </InterpreterArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <CommandLineArguments>pipeline_config=..\..\pipeline.xml scene_config=scene.xml</CommandLineArguments>
+    <IsWindowsApplication>False</IsWindowsApplication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AnalysisDatabase.py" />
+    <Compile Include="AutoTuner.py" />
+    <Compile Include="Configuration.py" />
+    <Compile Include="DotFileDecorator.py" />
+    <Compile Include="Enums.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ParseUtils.py" />
+    <Compile Include="TestCase.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scenes\3d_tree_12_2\textures\leaf.png" />
+    <Content Include="scenes\3d_tree_12_2\textures\trunk.png" />
+    <Content Include="scenes\3d_tree_4_3\textures\leaf.png" />
+    <Content Include="scenes\3d_tree_4_3\textures\trunk.png" />
+    <Content Include="scenes\3d_tree_8_3\textures\leaf.png" />
+    <Content Include="scenes\3d_tree_8_3\textures\trunk.png" />
+    <Content Include="scenes\commercial\textures\air_conditioner_side.png" />
+    <Content Include="scenes\commercial\textures\air_conditioner_top.png" />
+    <Content Include="scenes\commercial\textures\ceil.png" />
+    <Content Include="scenes\commercial\textures\column.png" />
+    <Content Include="scenes\commercial\textures\door.png" />
+    <Content Include="scenes\commercial\textures\roof.png" />
+    <Content Include="scenes\commercial\textures\wall.png" />
+    <Content Include="scenes\commercial\textures\window.png" />
+    <Content Include="templates\bin\dummy.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scenes\" />
+    <Folder Include="scenes\3d_tree_12_2\" />
+    <Folder Include="scenes\3d_tree_12_2\textures" />
+    <Folder Include="scenes\3d_tree_4_3\" />
+    <Folder Include="scenes\3d_tree_4_3\textures" />
+    <Folder Include="scenes\3d_tree_8_3\" />
+    <Folder Include="scenes\3d_tree_8_3\textures" />
+    <Folder Include="scenes\commercial\" />
+    <Folder Include="scenes\commercial\textures" />
+    <Folder Include="templates\" />
+    <Folder Include="templates\bin" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>

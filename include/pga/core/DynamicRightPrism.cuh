@@ -1,0 +1,181 @@
+#pragma once
+
+#include <string>
+#include <stdexcept>
+#include <cuda_runtime_api.h>
+
+#include <math/vector.h>
+
+#include "Shape.cuh"
+#include "ConvexPolygon.cuh"
+#include "DynamicPolygon.cuh"
+#include "TStdLib.h"
+
+namespace PGA
+{
+	namespace Shapes
+	{
+		template <unsigned int MaxNumVerticesT, bool ConvexT>
+		struct DynamicRightPrism : public Shape
+		{
+		private:
+			__host__ __device__ __inline__ void copyVertices(const math::float2 otherVertices[MaxNumVerticesT])
+			{
+				for (auto i = 0; i < numSides; i++)
+					vertices[i] = otherVertices[i];
+			}
+
+		public:
+			math::float2 vertices[MaxNumVerticesT];
+			unsigned int numSides;
+			bool invert;
+
+			__host__ __device__ DynamicRightPrism() : numSides(0), invert(false) {}
+
+			__host__ __device__ DynamicRightPrism(const math::float2* vertices, unsigned int numSides)
+			{
+#if (defined(__CUDA_ARCH__) && (__CUDA_ARCH__ > 0))
+#if defined(PGA_INVARIANT_CHECKING_LVL) && (PGA_INVARIANT_CHECKING_LVL >= 2)
+				if (numSides < 3)
+				{
+					printf("dynamic right prism num. sides must be greater than or equal 3 (numSides=%d)\n", numSides);
+					asm("trap;");
+				}
+#endif
+#else
+#if defined(PGA_INVARIANT_CHECKING_LVL) && (PGA_INVARIANT_CHECKING_LVL == 1 || PGA_INVARIANT_CHECKING_LVL == 3)
+				if (numSides < 3)
+					throw std::runtime_error(("dynamic right prism num. sides must be greater than or equal 3 (numSides=" + std::to_string(numSides) + ")").c_str());
+#endif
+#endif
+				this->numSides = numSides;
+				invert = false;
+				for (unsigned int i = 0; i < numSides; i++)
+					this->vertices[i] = vertices[i];
+			}
+
+			__host__ __device__ DynamicRightPrism(const DynamicRightPrism<MaxNumVerticesT, ConvexT>& other) : Shape(other), numSides(other.numSides), invert(other.invert)
+			{
+				copyVertices(other.vertices);
+			}
+
+			__host__ __device__ __inline__ unsigned int getNumSides() const
+			{
+				return numSides;
+			}
+
+			__host__ __device__ __inline__ math::float4x4 getAdjustedModel() const
+			{
+				float sign = (!invert) + (invert * -1.0f);
+				return math::float4x4(sign * model._11, sign * model._12, model._13, model._14,
+									  sign * model._21, sign * model._22, model._23, model._24,
+									  sign * model._31, sign * model._32, model._33, model._34,
+									  0.0f, 0.0f, 0.0f, 1.0f);
+			}
+
+			__host__ __device__ __inline__ math::float2 getVertex(unsigned int i) const
+			{
+				if (invert)
+				{
+					math::float2 vertex = vertices[numSides - i - 1];
+					vertex.y = -vertex.y;
+					return vertex;
+				}
+				else
+				{
+					return vertices[i];
+				}
+			}
+
+			__host__ __device__ __inline__ DynamicPolygon<MaxNumVerticesT, ConvexT> newCapFace(bool invert = false) const
+			{
+				DynamicPolygon<MaxNumVerticesT, ConvexT> cap;
+				cap.numSides = numSides;
+				cap.invert = invert;
+				for (auto i = 0; i < numSides; i++)
+					cap.vertices[i] = vertices[i];
+				return cap;
+			}
+
+			__host__ __device__ __inline__ ConvexPolygon<4, true> newSideFace() const
+			{
+				return{};
+			}
+
+			__host__ __device__ __inline__ static DynamicRightPrism<MaxNumVerticesT, ConvexT> fromPlanarType(const DynamicPolygon<MaxNumVerticesT, ConvexT>& polygon)
+			{
+				DynamicRightPrism<MaxNumVerticesT, ConvexT> prism;
+				prism.numSides = polygon.numSides;
+				prism.invert = polygon.invert;
+				for (auto i = 0; i < polygon.numSides; i++)
+					prism.vertices[i] = polygon.vertices[i];
+				return prism;
+			}
+
+			__host__ __device__ __inline__ DynamicRightPrism<MaxNumVerticesT, ConvexT>& operator=(const DynamicRightPrism<MaxNumVerticesT, ConvexT>& other)
+			{
+				Shape::operator=(other);
+				numSides = other.numSides;
+				invert = other.invert;
+				copyVertices(other.vertices);
+				return *this;
+			}
+
+			__host__ __inline__ static std::string toString()
+			{
+				return "DynamicRightPrism<" + std::to_string(MaxNumVerticesT) + ", " + std::to_string(ConvexT) + ">";
+			}
+
+		};
+
+		template <unsigned int MaxNumVerticesT, bool ConvexT>
+		struct GetCapFaceType < DynamicRightPrism<MaxNumVerticesT, ConvexT> >
+		{
+			typedef DynamicPolygon<MaxNumVerticesT, ConvexT> Result;
+
+		};
+		
+		template <unsigned int MaxNumVerticesT, bool ConvexT>
+		struct GetSideFaceType < DynamicRightPrism<MaxNumVerticesT, ConvexT> >
+		{
+			typedef ConvexPolygon<4, true> Result;
+
+		};
+
+		template <unsigned int MaxNumVerticesT, bool ConvexT>
+		struct GetExtrudedType < DynamicPolygon<MaxNumVerticesT, ConvexT> >
+		{
+			typedef DynamicRightPrism<MaxNumVerticesT, ConvexT> Result;
+
+		};
+
+		template <unsigned int MaxNumVerticesT>
+		struct GetName < DynamicRightPrism<MaxNumVerticesT, true> >
+		{
+			__host__ __device__ __inline__ static const char* Result()
+			{
+				return "DynamicConvexRightPrism";
+			}
+
+		};
+
+		template <unsigned int MaxNumVerticesT>
+		struct GetName < DynamicRightPrism<MaxNumVerticesT, false> >
+		{
+			__host__ __device__ __inline__ static const char* Result()
+			{
+				return "DynamicRightPrism";
+			}
+
+		};
+
+		template <unsigned int MaxNumVerticesT, bool ConvexT>
+		struct IsPlanar < DynamicRightPrism<MaxNumVerticesT, ConvexT> >
+		{
+			static const bool Result = false;
+
+		};
+
+	}
+
+}

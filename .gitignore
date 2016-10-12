@@ -1,29 +1,15 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+[Bb]uild/
+[Ll]ibs/
+[Oo]ut/
+OPT*/
+__pycache__/
 
-# Precompiled Headers
-*.gch
-*.pch
+*.i
+*.ii
+*.gpu
+*.ptx
+*.cubin
+*.fatbin
+*.pyc
+*.suo
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app

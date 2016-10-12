@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<ModelRootPath
+		path="models/"
+	/>
+	
+	<TextureRootPath
+		path="textures/"
+	/>
+
+	<!-- TRUNK (x4095) -->
+	<InstancedTriangleMesh
+		index="0"
+		maxNumElements="1048320"
+		type="1"
+		modelPath="trunk.obj"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="trunk.png" />
+            <Attribute name="uvScale0" value="(1,4)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- LEAF (x6144)-->
+	<InstancedTriangleMesh
+		index="1"
+		maxNumElements="1572864"
+		type="1"
+		modelPath="leaf.obj"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="leaf.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+</Configuration>

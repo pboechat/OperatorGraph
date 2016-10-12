@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<ModelRootPath
+		path="models/"
+	/>
+
+	<!-- CUBE (x10)-->
+	<InstancedTriangleMesh
+		index="0"
+		maxNumElements="163840"
+		type="0"
+		shape="Box"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</TriangleMesh>
+
+	<!-- CYLINDER (x13) -->
+	<InstancedTriangleMesh
+		index="1"
+		maxNumElements="212992"
+		type="1"
+		modelPath="cylinder2.obj"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</TriangleMesh>
+
+	<!-- TAPER (x1) -->
+	<InstancedTriangleMesh
+		index="2"
+		maxNumElements="16384"
+		type="1"
+		modelPath="taper2.obj"
+	>
+		<Material type="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</TriangleMesh>
+	
+</Configuration>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<TextureRootPath
+		path="textures/commercial/"
+	/>
+
+	<!-- AIR CONDITIONER SIDE -->
+	<InstancedTriangleMesh
+		index="0"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="air_conditioner_side.png" />
+			<Attribute name="useUvX0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+	
+	<!-- AIR CONDITIONER TOP -->
+	<InstancedTriangleMesh
+		index="1"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="air_conditioner_top.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- COLUMN WALL -->
+	<InstancedTriangleMesh
+		index="2"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="column.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- DOOR -->
+	<InstancedTriangleMesh
+		index="3"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="door.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- ROOF -->
+	<InstancedTriangleMesh
+		index="4"
+		maxNumElements="100000"
+		type="0"
+		shape="DynamicRightPrism"
+		vertices="(-0.5, 0.5), (-0.5, -0.5),(0.5, 0.0)"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="roof.png" />
+			<Attribute name="uvScale0" value="(4,4)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- TOP -->
+	<InstancedTriangleMesh
+		index="5"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="ceil.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+			<Attribute name="uvScale0" value="(0.5,0.5)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WALL -->
+	<InstancedTriangleMesh
+		index="6"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+			<Attribute name="uvScale0" value="(0.5,0.5)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WINDOW -->
+	<InstancedTriangleMesh
+		index="7"
+		maxNumElements="100000"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="window.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+</Configuration>

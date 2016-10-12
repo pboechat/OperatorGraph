@@ -1,0 +1,12 @@
+axiom Box A;
+
+terminal B (1,0);
+
+// ---
+
+A = IfSizeLess(X, 0.333) { B | SubX };
+ZDiscard = SubDiv(Z) { -1: A | -1: Discard() | -1: A };
+YDiscard = SubDiv(Y) { -1: ZDiscard | -1: Discard() | -1: ZDiscard };
+SubZ = SubDiv(Z) { -1: A | -1: A | -1: A };
+SubY = SubDiv(Y) { -1: SubZ | -1: ZDiscard | -1: SubZ };
+SubX = SubDiv(X) { -1: SubY | -1: YDiscard | -1: SubY };

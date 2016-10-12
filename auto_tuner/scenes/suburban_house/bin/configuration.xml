@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<TextureRootPath
+		path="textures/"
+	/>
+
+	<!-- DOOR -->
+	<InstancedTriangleMesh
+		index="0"
+		maxNumElements="256"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="door.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- FLOOR DIVISION -->
+	<InstancedTriangleMesh
+		index="1"
+		maxNumElements="2048"
+		type="0"
+		shape="Box"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- GARAGE DOOR -->
+	<InstancedTriangleMesh
+		index="2"
+		maxNumElements="256"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="garage_door.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- PORCH FRONT -->
+	<InstancedTriangleMesh
+		index="3"
+		maxNumElements="256"
+		type="0"
+		shape="DynamicConvexPolygon"
+		vertices="(0,0.5),(-0.5,-0.5),(0.5,-0.5)"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="porch_front.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- PORCH ROOF -->
+	<InstancedTriangleMesh
+		index="4"
+		maxNumElements="1"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="porch_roof.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+			<Attribute name="uvScale0" value="(0.2,0.2)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- ROOF -->
+	<InstancedTriangleMesh
+		index="5"
+		maxNumElements="3072"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="roof.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+			<Attribute name="uvScale0" value="(0.2,0.2)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- ROOF SIDE -->
+	<InstancedTriangleMesh
+		index="6"
+		maxNumElements="1536"
+		type="0"
+		shape="DynamicConvexPolygon"
+		vertices="(0,0.5),(-0.5,-0.5),(0.5,-0.5)"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="roof_side.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- STEP -->
+	<InstancedTriangleMesh
+		index="7"
+		maxNumElements="512"
+		type="0"
+		shape="Box"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WALL/WALL2 -->
+	<InstancedTriangleMesh
+		index="8"
+		maxNumElements="58880"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WINDOW -->
+	<InstancedTriangleMesh
+		index="9"
+		maxNumElements="14336"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="window.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WINDOW SILL -->
+	<InstancedTriangleMesh
+		index="10"
+		maxNumElements="14336"
+		type="0"
+		shape="Box"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- GARAGE DOOR BORDER -->
+	<InstancedTriangleMesh
+		index="11"
+		maxNumElements="768"
+		type="0"
+		shape="Box"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- PORCH COLUMN -->
+	<InstancedTriangleMesh
+		index="12"
+		maxNumElements="512"
+		type="0"
+		shape="Box"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+</Configuration>

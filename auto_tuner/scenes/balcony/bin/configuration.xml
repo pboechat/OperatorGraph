@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<TextureRootPath
+		path="textures/"
+	/>
+	
+	<!-- WINDOW SILL -->
+	<InstancedTriangleMesh
+		index="0"
+		maxNumElements="12288"
+		type="0"
+		shape="Box"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="window_sill.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- BALCONY DOOR -->
+	<InstancedTriangleMesh
+		index="1"
+		maxNumElements="12288"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="balcony_door.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- DOOR -->
+	<InstancedTriangleMesh
+		index="2"
+		maxNumElements="1024"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="door.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- BALCONY WALL -->
+	<InstancedTriangleMesh
+		index="3"
+		maxNumElements="36864"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="0" backFaceCulling="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WALL -->
+	<InstancedTriangleMesh
+		index="4"
+		maxNumElements="13312"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- WINDOW -->
+	<InstancedTriangleMesh
+		index="5"
+		maxNumElements="14336"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="window.png" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- ROOF -->
+	<InstancedTriangleMesh
+		index="6"
+		maxNumElements="512"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="roof.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+			<Attribute name="uvScale0" value="(0.25,0.25)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- ROOF SIDE -->
+	<InstancedTriangleMesh
+		index="7"
+		maxNumElements="512"
+		type="0"
+		shape="DynamicConvexPolygon"
+		vertices="(0,0.5),(-0.5,-0.5),(0.5,-0.5)"
+	>
+		<Material type="1">
+			<Attribute name="tex0" value="wall.png" />
+			<Attribute name="useUvX0" value="0" />
+			<Attribute name="useUvY0" value="0" />
+		</Material>
+	</InstancedTriangleMesh>
+
+	<!-- BALCONY FLOOR -->
+	<InstancedTriangleMesh
+		index="8"
+		maxNumElements="12288"
+		type="0"
+		shape="Quad"
+	>
+		<Material type="0" backFaceCulling="0">
+			<Attribute name="color0" value="(1,1,1,1)" />
+		</Material>
+	</InstancedTriangleMesh>
+
+</Configuration>

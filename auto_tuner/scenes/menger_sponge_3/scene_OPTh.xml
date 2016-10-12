@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene
+    grammarFile="grammar.pga"
+    templateFile="template.h"
+    outputPath="OPTh/"
+    gridX="16"
+    gridY="16"
+    itemSize="112"
+    queuesMem="2048"
+    numRuns="100"
+    minNumAxioms="0"
+    maxNumAxioms="256"
+    axiomStep="256"
+    optimization="2"
+    HSTO="2"
+/>

@@ -1,0 +1,35 @@
+#pragma once
+
+namespace PGA
+{
+	namespace Compiler
+	{
+		enum OperatorType
+		{
+			// 0 is reserved
+			TRANSLATE = 1,
+			ROTATE,
+			SCALE,
+			EXTRUDE,
+			COMPSPLIT,
+			SUBDIV,
+			REPEAT,
+			DISCARD,
+			IF,
+			IFSIZELESS,
+			IFCOLLIDES,
+			GENERATE,
+			STOCHASTIC,
+			SET_AS_DYNAMIC_CONVEX_POLYGON,
+			SET_AS_DYNAMIC_CONVEX_RIGHT_PRISM,
+			SET_AS_DYNAMIC_CONCAVE_POLYGON,
+			SET_AS_DYNAMIC_CONCAVE_RIGHT_PRISM,
+			COLLIDER,
+			SWAPSIZE,
+			REPLICATE
+
+		};
+
+	}
+
+}

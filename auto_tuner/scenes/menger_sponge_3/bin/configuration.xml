@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    
+    <!-- BOX -->
+    <InstancedTriangleMesh
+		index="0"
+		maxNumElements="2048000"
+		type="0"
+		shape="Box"
+	>
+        <Material type="0">
+            <Attribute name="color0" value="(1,1,1,1)" />
+        </Material>
+    </InstancedTriangleMesh>
+
+</Configuration>
