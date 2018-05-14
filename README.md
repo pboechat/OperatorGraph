@@ -43,6 +43,7 @@ or the equivalent grammar in __PGA-shape__  DSL:
         SubX = SubDiv(X) { -1: SubY | -1: YDiscard | -1: SubY }
 
 Resulting in the following Menger sponge:
+
 ![Menger Sponge](http://www.pedroboechat.com/images/operator-graph-menger-sponge.png)
 
 Grammars written with the C++/CUDA variant can be embedded in OpenGL/Direct3D applications,
