@@ -22,11 +22,10 @@ __PGA-shape__ can be used as a C++/CUDA idiom or as a domain specific language (
 you could write the following grammar in __PGA-shape__  C++/CUDA:
             
         struct Rules : T::List <
-            /* rule[0]= */ Proc < Box, Subdivide<DynParam<0>, T::Pair< DynParam<1>, DCall<0>>, T::Pair< DynParam<2>, DCall<1>>, T::Pair< DynParam<3>, DCall<2>>>, 1>,
-            /* rule[1]= */ Proc < Box, Discard, 1>,
-            /* rule[2]= */ Proc < Box, IfSizeLess< DynParam<0>, DynParam<1>, DCall<0>, DCall<1>>, 1>,
-            /* rule[3]= */ Proc < Box, Generate< false, 1 /*instanced triangle mesh*/, 
-            DynParam<0>>, 1>,
+            /* SubXYZ */ Proc < Box, Subdivide<DynParam<0>, T::Pair< DynParam<1>, DCall<0>>, T::Pair< DynParam<2>, DCall<1>>, T::Pair< DynParam<3>, DCall<2>>>, 1>,
+            /* Discard */ Proc < Box, Discard, 1>,
+            /* A */ Proc < Box, IfSizeLess< DynParam<0>, DynParam<1>, DCall<0>, DCall<1>>, 1>,
+            /* B */ Proc < Box, Generate< false, 1 /*instanced triangle mesh*/, DynParam<0>>, 1>,
         > {};
             
 or the equivalent grammar in the __PGA-shape__  DSL:
