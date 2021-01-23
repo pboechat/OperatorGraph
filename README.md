@@ -41,7 +41,7 @@ or the equivalent grammar in the __PGA-shape__  DSL:
         SubY = SubDiv(Y) { -1: SubZ | -1: ZDiscard | -1: SubZ };
         SubX = SubDiv(X) { -1: SubY | -1: YDiscard | -1: SubY }
 
-Both resulting the following Menger sponge:
+Both resulting in the following Menger sponge:
 
 ![Menger Sponge](http://www.pedroboechat.com/images/operator-graph-menger-sponge.png)
 
