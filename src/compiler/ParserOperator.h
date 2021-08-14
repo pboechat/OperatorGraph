@@ -1,22 +1,22 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <list>
-#include <memory>
-
-#include <pga/compiler/OperatorType.h>
-#include <pga/compiler/Operator.h>
-#include <pga/compiler/Rule.h>
-#include <pga/compiler/Logger.h>
-
 #include "ParserElement.h"
-#include "ParserOperand.h"
-// NOTE: needed here!
 #include "ParserExpression.h"
+#include "ParserOperand.h"
 #include "ParserParameterizedSuccessor.h"
 #include "Terminal.h"
 
+#include <pga/compiler/Logger.h>
+#include <pga/compiler/Operator.h>
+#include <pga/compiler/OperatorType.h>
+#include <pga/compiler/Rule.h>
+
+#include <list>
+#include <memory>
+#include <string>
+#include <vector>
+
+// NOTE: needed here!
 namespace PGA
 {
 	namespace Compiler

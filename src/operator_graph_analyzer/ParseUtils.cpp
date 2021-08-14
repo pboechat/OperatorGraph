@@ -1,10 +1,10 @@
-#include <cstdlib>
-#include <vector>
+#include "HeuristicsTest.h"
+#include "ParseUtils.h"
 
 #include <pga/core/StringUtils.h>
 
-#include "HeuristicsTest.h"
-#include "ParseUtils.h"
+#include <cstdlib>
+#include <vector>
 
 namespace ParseUtils
 {

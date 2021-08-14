@@ -1,16 +1,14 @@
 #pragma once
 
-#include <string>
-#include <initializer_list>
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GL/glew.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
 #include "GLMaterial.h"
+
+#include <GL/glew.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+#include <windows.h>
+
+#include <initializer_list>
+#include <string>
 
 namespace PGA
 {

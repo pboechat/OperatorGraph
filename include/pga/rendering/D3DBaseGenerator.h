@@ -1,16 +1,16 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <d3d11.h>
+#include "D3DMaterial.h"
+#include "D3DMesh.h"
+#include "OBJExporter.h"
 
+#include <d3d11.h>
 #include <math/vector.h>
 
-#include "D3DMesh.h"
-#include "D3DMaterial.h"
-#include "OBJExporter.h"
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 namespace PGA
 {

@@ -1,45 +1,43 @@
-#include <map>
-#include <sstream>
-#include <iostream>
-#include <iomanip>
-
-#define BOOST_RESULT_OF_USE_DECLTYPE
-
-#include <boost/algorithm/string.hpp>
-#include <boost/config/warning_disable.hpp>
-#include <boost/spirit/include/qi.hpp>
-#include <boost/spirit/include/classic_position_iterator.hpp>
-#include <boost/spirit/include/support_line_pos_iterator.hpp>
-#include <boost/spirit/include/phoenix.hpp>
-#include <boost/spirit/include/phoenix_core.hpp>
-#include <boost/spirit/include/phoenix_operator.hpp>
-#include <boost/spirit/include/phoenix_fusion.hpp>
-#include <boost/spirit/include/phoenix_stl.hpp>
-#include <boost/spirit/include/phoenix_object.hpp>
-#include <boost/fusion/include/adapt_adt.hpp>
-#include <boost/fusion/include/adapt_struct.hpp>
-#include <boost/fusion/adapted/struct.hpp>
-#include <boost/variant/recursive_variant.hpp>
-
-#include <math/vector.h>
-
-#include <pga/compiler/Parser.h>
-
 #include "LineCounter.h"
-#include "Terminal.h"
 #include "ParserAxis.h"
-#include "ParserRepeatMode.h"
 #include "ParserExpression.h"
 #include "ParserOperand.h"
 #include "ParserOperator.h"
 #include "ParserParameterizedSuccessor.h"
 #include "ParserProductionRule.h"
-#include "ParserResult.h"
 #include "ParserRand.h"
+#include "ParserRepeatMode.h"
+#include "ParserResult.h"
 #include "ParserShapeAttribute.h"
 #include "ParserSuccessor.h"
 #include "ParserSymbol.h"
 #include "ParserTerminal.h"
+#include "Terminal.h"
+
+#include <boost/algorithm/string.hpp>
+#include <boost/config/warning_disable.hpp>
+#include <boost/fusion/adapted/struct.hpp>
+#include <boost/fusion/include/adapt_adt.hpp>
+#include <boost/fusion/include/adapt_struct.hpp>
+#include <boost/spirit/include/classic_position_iterator.hpp>
+#include <boost/spirit/include/phoenix.hpp>
+#include <boost/spirit/include/phoenix_core.hpp>
+#include <boost/spirit/include/phoenix_fusion.hpp>
+#include <boost/spirit/include/phoenix_object.hpp>
+#include <boost/spirit/include/phoenix_operator.hpp>
+#include <boost/spirit/include/phoenix_stl.hpp>
+#include <boost/spirit/include/qi.hpp>
+#include <boost/spirit/include/support_line_pos_iterator.hpp>
+#include <boost/variant/recursive_variant.hpp>
+#include <math/vector.h>
+#include <pga/compiler/Parser.h>
+
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <sstream>
+
+#define BOOST_RESULT_OF_USE_DECLTYPE
 
 namespace fusion = boost::fusion;
 namespace phoenix = boost::phoenix;
@@ -52,7 +50,6 @@ namespace PGA
 	{
 		namespace Parser
 		{
-			//////////////////////////////////////////////////////////////////////////
 			struct CommentSkipper : qi::grammar<std::string::const_iterator>
 			{
 				CommentSkipper() : CommentSkipper::base_type(skipRule, "C++-like comments")
@@ -67,10 +64,8 @@ namespace PGA
 
 			};
 
-			//////////////////////////////////////////////////////////////////////////
 			struct PGAGrammar : qi::grammar<std::string::const_iterator, PGA::Compiler::Parser::Result(), qi::locals<std::string>, CommentSkipper>
 			{
-				//////////////////////////////////////////////////////////////////////////
 				struct ErrorHandlingFunction
 				{
 					typedef qi::error_handler_result result_type;
@@ -95,7 +90,6 @@ namespace PGA
 
 				};
 
-				//////////////////////////////////////////////////////////////////////////
 				struct AnnotationFunction
 				{
 					typedef void result_type;
@@ -131,7 +125,6 @@ namespace PGA
 
 				};
 
-				//////////////////////////////////////////////////////////////////////////
 				struct OperatorNamesList : qi::symbols<char, unsigned>
 				{
 					OperatorNamesList()
@@ -160,7 +153,6 @@ namespace PGA
 					}
 				} operatorNames;
 
-				//////////////////////////////////////////////////////////////////////////
 				struct NoSuccessorOperatorNamesList : qi::symbols < char, unsigned >
 				{
 					NoSuccessorOperatorNamesList()
@@ -172,7 +164,6 @@ namespace PGA
 					}
 				} terminalOperatorNames;
 
-				//////////////////////////////////////////////////////////////////////////
 				struct ShapeTypeNamesList : qi::symbols<char, unsigned>
 				{
 					ShapeTypeNamesList()
@@ -200,7 +191,6 @@ namespace PGA
 					}
 				} shapeTypeNames;
 
-				//////////////////////////////////////////////////////////////////////////
 				struct ShapeAttributeNamesList : qi::symbols<char, unsigned>
 				{
 					ShapeAttributeNamesList()
@@ -217,7 +207,6 @@ namespace PGA
 					}
 				} shapeAttributeNames;
 
-				//////////////////////////////////////////////////////////////////////////
 				struct AxisNamesList : qi::symbols<char, float>
 				{
 					AxisNamesList()
@@ -231,7 +220,6 @@ namespace PGA
 					}
 				} axisNames;
 
-				//////////////////////////////////////////////////////////////////////////
 				struct RepeatModeNamesList : qi::symbols < char, float >
 				{
 					RepeatModeNamesList()
@@ -245,7 +233,6 @@ namespace PGA
 					}
 				} repeatModeNames;
 
-				//////////////////////////////////////////////////////////////////////////
 				struct OperationsNamesList : qi::symbols <char, unsigned>
 				{
 					// NOTE: must be in the same order as PGA::OperationType enumerator!
@@ -315,19 +302,16 @@ namespace PGA
 					using phoenix::at_c;
 					using phoenix::push_back;
 
-					//////////////////////////////////////////////////////////////////////////
 					doubleOrVariable =
 					(
 						qi::double_[_val = _1] | identifier[_val = phoenix::ref(variables)[_1]]
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					identifier = 
 					(
 						lexeme[+qi::char_("a-zA-Z_0-9_")[_val += _1]]
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					variable =
 						(
 						lit("var") >
@@ -337,13 +321,11 @@ namespace PGA
 						lit(";")
 						);
 
-					//////////////////////////////////////////////////////////////////////////
 					axiomVertex = 
 					(
 						(doubleOrVariable >> ',' >> doubleOrVariable)[_val = construct<math::float2>(_1, _2)]
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					axiom = 
 					(
 						lit("axiom") >
@@ -353,7 +335,6 @@ namespace PGA
 						lit(";")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					terminal = 
 					(
 						lit("terminal") > 
@@ -362,7 +343,6 @@ namespace PGA
 						lit(";")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					probability = 
 					(
 						qi::double_[_val = _1] >> 
@@ -375,7 +355,6 @@ namespace PGA
 						[_val = -1]
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					axis = axisNames[at_c<0>(_val) = _1];
 
 					repeatMode = repeatModeNames[at_c<0>(_val) = _1];
@@ -385,19 +364,16 @@ namespace PGA
 						shapeAttributeNames[at_c<0>(_val) = _1] > lit("(") > -(axisNames[at_c<1>(_val) = _1] > *(lit(",") > axisNames[at_c<2>(_val) = _1])) > lit(")")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					rand = 
 					(
 						lit("Rand(") > doubleOrVariable[at_c<0>(_val) = _1] > lit(",") > doubleOrVariable[at_c<1>(_val) = _1] > lit(")")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					vec2 = 
 					(
 						lit("(") > doubleOrVariable[at_c<0>(_val) = _1] > lit(",") > doubleOrVariable[at_c<1>(_val) = _1] > lit(")")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					operand = 
 					(
 						axis |
@@ -409,7 +385,6 @@ namespace PGA
 						doubleOrVariable
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					expression = 
 					(
 						lit("Exp(") > 
@@ -419,14 +394,12 @@ namespace PGA
 						lit(")")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					symbol = 
 					(
 						(probability[at_c<1>(_val) = _1] > identifier[at_c<0>(_val) = _1]) | 
 						identifier[at_c<0>(_val) = _1, at_c<1>(_val) = 0]
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					successor = 
 					(
 						operatorWithSuccessor | 
@@ -434,13 +407,11 @@ namespace PGA
 						symbol
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					parameterizedSuccessor = 
 					(
 						doubleOrVariable[push_back(at_c<0>(_val), _1)] >> lit(":") >> successor[at_c<1>(_val) = _1]
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					operatorWithSuccessor = 
 					(
 						-probability[at_c<3>(_val) = _1] >>
@@ -466,13 +437,11 @@ namespace PGA
 						)
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					operatorWithoutSuccessor = 
 					(
 						terminalOperatorNames[at_c<0>(_val) = _1] >> lit('(') >> lit(')')
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					productionSymbol = 
 					(
 						lit("-->") | 
@@ -483,7 +452,6 @@ namespace PGA
 						lit(">>")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					productionRule = 
 					(
 						identifier[at_c<0>(_val) = _1] > 
@@ -492,14 +460,12 @@ namespace PGA
 						lit(";")
 					);
 
-					//////////////////////////////////////////////////////////////////////////
 					grammar =
 						(*variable) ||
 						(+axiom[push_back(at_c<0>(_val), _1)]) ||
 						(*terminal[push_back(at_c<2>(_val), _1)]) ||
 						(+productionRule[push_back(at_c<1>(_val), _1)]);
 
-					//////////////////////////////////////////////////////////////////////////
 					axiomVertex.name("[axiom vertex]");
 					axiom.name("[axiom]");
 					terminal.name("[terminal]");
@@ -579,7 +545,6 @@ namespace PGA
 
 }
 
-//////////////////////////////////////////////////////////////////////////
 BOOST_FUSION_ADAPT_STRUCT(
 	PGA::Compiler::Parser::Expression,
 	(unsigned int, operation)

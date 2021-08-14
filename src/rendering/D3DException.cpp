@@ -1,6 +1,6 @@
-#include <string>
-
 #include <pga/rendering/D3DException.h>
+
+#include <string>
 
 namespace PGA
 {

@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
-#include <stdexcept>
-
-#include "GPUTechnique.h"
 #include "Axis.h"
-#include "RepeatMode.h"
-#include "ParameterType.h"
+#include "GPUTechnique.h"
 #include "OperandType.h"
 #include "OperationType.h"
+#include "ParameterType.h"
+#include "RepeatMode.h"
+
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {

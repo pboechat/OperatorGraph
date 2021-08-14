@@ -1,17 +1,17 @@
 #pragma once
 
-#include <string>
+#include <cuda_runtime_api.h>
+#include <pga/core/CUDAException.h>
+#include <pga/core/Grid.cuh>
+#include <pga/core/TStdLib.h>
+#include <utils.h>
+
 #include <fstream>
 #include <iostream>
-#include <cuda_runtime_api.h>
-
-#include <pga/core/TStdLib.h>
-#include <pga/core/Grid.cuh>
-#include <pga/core/CUDAException.h>
+#include <string>
 
 namespace SceneUtils
 {
-	//////////////////////////////////////////////////////////////////////////
 	const unsigned int MaxNumAttributes = 10;
 
 	namespace Device
@@ -84,7 +84,6 @@ namespace SceneUtils
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	// FIXME: bad design!
 	namespace GriddedSceneGlovalVars
 	{
@@ -197,7 +196,6 @@ namespace SceneUtils
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <typename ControllerT>
 	struct SceneInitialization
 	{
@@ -224,12 +222,11 @@ namespace SceneUtils
 	public:
 		static void initialize()
 		{
-			Switch<ControllerT::IsInitializable>::initialize();
+			Switch<ControllerT::template IsInitializable>::initialize();
 		}
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <typename ControllerT>
 	struct SceneGrid
 	{
@@ -347,7 +344,6 @@ namespace SceneUtils
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <typename ControllerT>
 	struct SceneAttributes
 	{
@@ -407,7 +403,6 @@ namespace SceneUtils
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <typename ConfiguratorT>
 	struct SceneConfiguration
 	{

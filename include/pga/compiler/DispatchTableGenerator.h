@@ -1,24 +1,24 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <set>
-#include <unordered_set>
-#include <deque>
-#include <map>
-
-#include <pga/core/DispatchTable.h>
-#include <pga/compiler/ShapeType.h>
-#include <pga/compiler/OperatorType.h>
-#include <pga/compiler/ProcedureList.h>
-#include <pga/compiler/Logger.h>
 #include <pga/compiler/Axiom.h>
-#include <pga/compiler/Rule.h>
-#include <pga/compiler/Parameters.h>
-#include <pga/compiler/Symbol.h>
-#include <pga/compiler/Operator.h>
 #include <pga/compiler/Graph.h>
 #include <pga/compiler/GraphVisitor.h>
+#include <pga/compiler/Logger.h>
+#include <pga/compiler/Operator.h>
+#include <pga/compiler/OperatorType.h>
+#include <pga/compiler/Parameters.h>
+#include <pga/compiler/ProcedureList.h>
+#include <pga/compiler/Rule.h>
+#include <pga/compiler/ShapeType.h>
+#include <pga/compiler/Symbol.h>
+#include <pga/core/DispatchTable.h>
+
+#include <deque>
+#include <map>
+#include <set>
+#include <string>
+#include <unordered_set>
+#include <vector>
 
 namespace PGA
 {

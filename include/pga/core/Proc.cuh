@@ -1,22 +1,21 @@
 #pragma once
 
-#include <cstdio>
-#include <chrono>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <procedureInterface.cuh>
-
+#include "ClockCycleCounter.cuh"
 #include "DebugFlags.h"
 #include "GlobalVariables.cuh"
+#include "Instrumentation.cuh"
 #include "Symbol.cuh"
 #include "TStdLib.h"
-#include "Instrumentation.cuh"
-#include "ClockCycleCounter.cuh"
+
+#include <cuda_runtime_api.h>
+#include <procedureInterface.cuh>
+
+#include <chrono>
+#include <cstdio>
+#include <stdexcept>
 
 namespace PGA
 {
-	//////////////////////////////////////////////////////////////////////////
 	template <typename ShapeT, typename OperatorT, unsigned int NumThreadsT = 1>
 	class Proc : public ::Procedure
 	{

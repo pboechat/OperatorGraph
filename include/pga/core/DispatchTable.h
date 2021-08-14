@@ -1,14 +1,15 @@
 #pragma once
 
-#include <vector>
-#include <initializer_list>
-#include <memory>
-#include <exception>
+#include "DispatchTableEntry.h"
+#include "ParameterType.h"
+
 #include <algorithm>
 #include <cstring>
-
-#include "ParameterType.h"
-#include "DispatchTableEntry.h"
+#include <exception>
+#include <initializer_list>
+#include <memory>
+#include <vector>
+#include <stdexcept>
 
 namespace PGA
 {

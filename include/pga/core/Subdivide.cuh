@@ -1,25 +1,24 @@
 #pragma once
 
-#include <cstdio>
-#include <string>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-
 #include "DebugFlags.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
+#include "Parameters.cuh"
 #include "Shape.cuh"
 #include "Symbol.cuh"
-#include "TStdLib.h"
 #include "SymbolDecorator.cuh"
-#include "Parameters.cuh"
+#include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+#include <math/vector.h>
+
+#include <cstdio>
+#include <string>
 
 namespace PGA
 {
 	namespace Operators
 	{
-		//////////////////////////////////////////////////////////////////////////
 		template <typename AxisT, typename... Params1T>
 		class Subdivide
 		{
@@ -168,7 +167,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename... Params2T>
 		class Subdivide < PGA::Parameters::DynParams, Params2T... >
 		{

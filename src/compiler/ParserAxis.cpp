@@ -1,6 +1,6 @@
-#include <pga/core/Axis.h>
-
 #include "ParserAxis.h"
+
+#include <pga/core/Axis.h>
 
 namespace PGA
 {

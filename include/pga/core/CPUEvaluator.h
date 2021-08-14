@@ -1,30 +1,30 @@
 #pragma once
 
-#include <map>
-#include <vector>
-#include <deque>
-#include <memory>
-#include <cuda_runtime_api.h>
-
-#include "DebugFlags.h"
+#include "CPUBVHConstructor.h"
+#include "CPUBaseContext.h"
 #include "CUDAException.h"
-#include "Statistics.h"
+#include "DebugFlags.h"
+#include "Discard.cuh"
 #include "DispatchTableEntry.h"
 #include "GlobalVariables.cuh"
-#include "Symbol.cuh"
-#include "CPUBVHConstructor.h"
-#include "ShapeGenerator.cuh"
-#include "Discard.cuh"
-#include "TStdLib.h"
 #include "HighResClock.h"
 #include "Instrumentation.cuh"
-#include "CPUBaseContext.h"
+#include "ShapeGenerator.cuh"
+#include "Statistics.h"
+#include "Symbol.cuh"
+#include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+
+#include <deque>
+#include <map>
+#include <memory>
+#include <vector>
 
 namespace PGA
 {
 	namespace CPU
 	{
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename QueuesManagerT>
 		class BaseQueue
 		{
@@ -35,7 +35,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureT, typename QueuesManagerT, typename ContextT>
 		class Queue : public BaseQueue<QueuesManagerT>
 		{
@@ -76,7 +75,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureT, unsigned int PhasesT>
 		struct MultiPhaseQueueBuilder
 		{
@@ -107,7 +105,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureListT, unsigned int CountT>
 		struct QueuesBuilder
 		{
@@ -146,7 +143,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureListT>
 		class RoundRobinQueuesManager
 		{
@@ -213,7 +209,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureListT, typename GenFuncFilterT, bool UseInstrumentationT>
 		struct BaseSymbolManager
 		{
@@ -293,14 +288,12 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct DefaultConfiguration
 		{
 			static const unsigned int MaxDerivationSteps = 100000;
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template
 		<
 			typename ProcedureListT,
@@ -397,7 +390,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template
 		<
 			typename ProcedureListT,

@@ -1,20 +1,20 @@
 #pragma once
 
-#include <memory>
-#include <string>
+#include <pga/compiler/Axiom.h>
+#include <pga/compiler/Edge.h>
+#include <pga/compiler/Graph.h>
+#include <pga/compiler/Parameters.h>
+#include <pga/compiler/Rule.h>
+#include <pga/compiler/ShapeType.h>
+#include <pga/compiler/Vertex.h>
+
 #include <map>
+#include <memory>
+#include <set>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
-#include <set>
 #include <vector>
-
-#include <pga/compiler/ShapeType.h>
-#include <pga/compiler/Axiom.h>
-#include <pga/compiler/Rule.h>
-#include <pga/compiler/Parameters.h>
-#include <pga/compiler/Edge.h>
-#include <pga/compiler/Vertex.h>
-#include <pga/compiler/Graph.h>
 
 namespace PGA
 {

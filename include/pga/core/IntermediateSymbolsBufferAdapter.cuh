@@ -1,22 +1,21 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
-#include "CUDAException.h"
-#include "ContextSensitivityDeviceVariables.cuh"
-#include "Shapes.cuh"
 #include "AABB.cuh"
+#include "BVH.cuh"
 #include "BoundingVolumeConstructor.cuh"
+#include "CUDAException.h"
+#include "Collision.cuh"
+#include "ContextSensitivityDeviceVariables.cuh"
 #include "IntermediateSymbol.cuh"
 #include "IntermediateSymbolsBuffer.cuh"
-#include "BVH.cuh"
-#include "Collision.cuh"
+#include "Shapes.cuh"
+
+#include <cuda_runtime_api.h>
 
 namespace PGA
 {
 	namespace ContextSensitivity
 	{
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		struct IntermediateSymbolsBufferAdapter
 		{
 		private:
@@ -82,6 +81,7 @@ namespace PGA
 #else
 					throw std::runtime_error("PGA::ContextSensitivity::IntermediateSymbolsBufferAdapter::getLeafBVHNode(..): invalid intermediate symbol index [i=" + std::to_string(i) + "]");
 #endif
+					return {};
 				}
 			}
 
@@ -124,12 +124,12 @@ namespace PGA
 #else
 					throw std::runtime_error("PGA::ContextSensitivity::IntermediateSymbolsBufferAdapter::checkCollision(..): invalid intermediate symbol index [i=" + std::to_string(i) + "]");
 #endif
+					return false;
 				}
 			}
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename Shape>
 		struct PerShapeIntermediateSymbolsBufferAdapter
 		{
@@ -140,7 +140,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <>
 		struct PerShapeIntermediateSymbolsBufferAdapter <Shapes::Box>
 		{
@@ -232,7 +231,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <>
 		struct PerShapeIntermediateSymbolsBufferAdapter <Shapes::Quad>
 		{
@@ -328,7 +326,6 @@ namespace PGA
 
 		};
 		
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		__host__ void IntermediateSymbolsBufferAdapter::initialize()
 		{
 			PerShapeIntermediateSymbolsBufferAdapter<Shapes::Box>::initialize();
@@ -347,7 +344,6 @@ namespace PGA
 			PerShapeIntermediateSymbolsBufferAdapter<Shapes::Quad>::release();
 		}
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		IntermediateSymbol<Shapes::Box>* PerShapeIntermediateSymbolsBufferAdapter<Shapes::Box>::shapes = 0;
 		IntermediateSymbol<Shapes::Quad>* PerShapeIntermediateSymbolsBufferAdapter<Shapes::Quad>::shapes = 0;
 

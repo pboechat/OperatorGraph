@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
 #include <d3d11.h>
-
 #include <math/vector.h>
+
+#include <vector>
 
 namespace PGA
 {

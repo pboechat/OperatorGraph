@@ -1,10 +1,11 @@
 #pragma once
 
-#include <memory>
-#include <driver_types.h>
-
 #include "D3DBaseInstancedTriangleMesh.h"
 #include "D3DInstancedTriangleMeshSource.h"
+
+#include <driver_types.h>
+
+#include <memory>
 
 namespace PGA
 {

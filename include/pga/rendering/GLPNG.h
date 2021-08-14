@@ -1,13 +1,12 @@
 #pragma once
 
+#include "Image.h"
+
+#include <GL/glew.h>
+#include <windows.h>
+
 #include <string>
 #include <vector>
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GL/glew.h>
-
-#include "Image.h"
 
 namespace PGA
 {

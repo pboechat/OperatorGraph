@@ -1,23 +1,22 @@
 #pragma once
 
-#include <string>
-#include <cuda_runtime_api.h>
-
-#include <math/math.h>
-
 #include "DebugFlags.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
+#include "Parameters.cuh"
 #include "Shape.cuh"
 #include "Symbol.cuh"
 #include "SymbolDecorator.cuh"
-#include "Parameters.cuh"
+
+#include <cuda_runtime_api.h>
+#include <math/math.h>
+
+#include <string>
 
 namespace PGA
 {
 	namespace Operators
 	{
-		//////////////////////////////////////////////////////////////////////////
 		template <typename ChanceT, typename... Params1T>
 		class RandomRule
 		{
@@ -118,7 +117,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename... Params2T>
 		class RandomRule < PGA::Parameters::DynParams, Params2T... >
 		{

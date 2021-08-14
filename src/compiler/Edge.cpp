@@ -1,6 +1,6 @@
-#include <string>
-
 #include <pga/compiler/Edge.h>
+
+#include <string>
 
 namespace PGA
 {
@@ -32,7 +32,6 @@ namespace PGA
 				out << " - ";
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		size_t Edge_LW::counter = 0;
 
 	}

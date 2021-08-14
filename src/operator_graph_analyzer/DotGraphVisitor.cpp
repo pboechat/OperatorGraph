@@ -1,4 +1,5 @@
 #include "DotGraphVisitor.h"
+
 //#define SIMPLIFIED_REP
 
 DotGraphVisitor::DotGraphVisitor()

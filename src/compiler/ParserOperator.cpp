@@ -1,16 +1,15 @@
-#include <string>
-#include <map>
-#include <tuple>
+#include "ParserOperator.h"
+#include "ParserSymbol.h"
+#include "ParserUtils.h"
 
 #include <boost/variant/get.hpp>
-
-#include <pga/core/Axis.h>
 #include <pga/compiler/EnumUtils.h>
 #include <pga/compiler/Symbol.h>
+#include <pga/core/Axis.h>
 
-#include "ParserUtils.h"
-#include "ParserSymbol.h"
-#include "ParserOperator.h"
+#include <map>
+#include <string>
+#include <tuple>
 
 namespace PGA
 {
@@ -26,7 +25,6 @@ namespace PGA
 
 			};
 
-			//////////////////////////////////////////////////////////////////////////
 			// NOTE: Has to follow the same order of the enumerator OperatorType
 			static OperatorDescription operatorDescriptions[] =
 			{
@@ -53,7 +51,6 @@ namespace PGA
 				/* REPLICATE */ { 0, -1, false }
 			};
 
-			//////////////////////////////////////////////////////////////////////////
 			std::shared_ptr<PGA::Compiler::Parameter> createOperatorParameter(Operand operand, OperatorType operatorType, size_t idx)
 			{
 				switch (operatorType)
@@ -145,7 +142,6 @@ namespace PGA
 				return std::shared_ptr<PGA::Compiler::Parameter>();
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			void Operator::convertToAbstraction
 			(
 				std::vector<PGA::Compiler::Terminal>& terminals, 

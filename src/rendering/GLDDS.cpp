@@ -1,14 +1,15 @@
-#include <stdexcept>
+#include "BaseDDS.h"
+
+#include <pga/rendering/GLDDS.h>
+#include <pga/rendering/GLException.h>
+
 #include <algorithm>
-#include <cstring>
-#include <memory>
 #include <cstdint>
+#include <cstring>
 #include <fstream>
 #include <iosfwd>
-
-#include "BaseDDS.h"
-#include <pga/rendering/GLException.h>
-#include <pga/rendering/GLDDS.h>
+#include <memory>
+#include <stdexcept>
 
 namespace PGA
 {

@@ -1,12 +1,11 @@
 #pragma once
 
+#include <GL/glew.h>
+#include <windows.h>
+
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GL/glew.h>
 
 namespace PGA
 {

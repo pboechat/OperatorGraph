@@ -1,6 +1,6 @@
-#include <pga/core/RepeatMode.h>
-
 #include "ParserRepeatMode.h"
+
+#include <pga/core/RepeatMode.h>
 
 namespace PGA
 {

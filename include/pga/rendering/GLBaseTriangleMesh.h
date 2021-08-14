@@ -1,14 +1,11 @@
 #pragma once
 
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GL/glew.h>
-
-#include <math/vector.h>
-
 #include "GLMesh.h"
 #include "TriangleMeshData.h"
+
+#include <GL/glew.h>
+#include <math/vector.h>
+#include <windows.h>
 
 namespace PGA
 {

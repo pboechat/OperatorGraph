@@ -1,8 +1,8 @@
-#include <string>
-#include <memory>
-
 #include <pga/rendering/GLException.h>
 #include <pga/rendering/GLTexture.h>
+
+#include <memory>
+#include <string>
 
 namespace PGA
 {
@@ -45,7 +45,6 @@ namespace PGA
 				return texture;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			void Texture2D::updateToDeviceMemory(Image<unsigned int>&& source)
 			{
 				if (texture)
@@ -95,7 +94,6 @@ namespace PGA
 				return static_cast<Texture2D&>(Texture::operator=(std::move(other)));
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			void Texture1D::updateToDeviceMemory(Image<unsigned int>&& source)
 			{
 				if (texture)

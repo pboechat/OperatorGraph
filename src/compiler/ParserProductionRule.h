@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
-#include <vector>
-
-#include <pga/compiler/Rule.h>
-#include <pga/compiler/Logger.h>
-
-#include "Terminal.h"
 #include "ParserElement.h"
 #include "ParserSuccessor.h"
+#include "Terminal.h"
+
+#include <pga/compiler/Logger.h>
+#include <pga/compiler/Rule.h>
+
+#include <string>
+#include <vector>
 
 namespace PGA
 {

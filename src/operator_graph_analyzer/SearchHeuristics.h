@@ -2,12 +2,12 @@
 
 #include <pga/compiler/Graph.h>
 
-#include <vector>
+#include <algorithm>
+#include <exception>
+#include <iostream>
 #include <map>
 #include <set>
-#include <exception>
-#include <algorithm>
-#include <iostream>
+#include <vector>
 
 namespace SearchHeuristics
 {

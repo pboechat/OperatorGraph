@@ -1,9 +1,8 @@
 #pragma once
 
 #include <cuda_runtime_api.h>
-
-#include <math/vector.h>
 #include <math/matrix.h>
+#include <math/vector.h>
 
 namespace PGA
 {

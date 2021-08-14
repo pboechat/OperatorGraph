@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
+#include <pga/compiler/Operator.h>
+#include <pga/compiler/ShapeType.h>
+
 #include <map>
-#include <set>
 #include <memory>
 #include <ostream>
-
-#include <pga/compiler/ShapeType.h>
-#include <pga/compiler/Operator.h>
+#include <set>
+#include <vector>
 
 namespace PGA
 {
@@ -15,7 +15,6 @@ namespace PGA
 	{
 		struct Edge;
 
-		//////////////////////////////////////////////////////////////////////////
 		struct Vertex
 		{
 			static const unsigned int ParameterPrecision = 3;
@@ -44,7 +43,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct Vertex_LW
 		{
 			Vertex_LW(std::weak_ptr<Vertex> ptr) : /*uid(counter++), */ptr(ptr)

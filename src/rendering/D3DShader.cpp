@@ -1,13 +1,13 @@
-#include <string.h>
-#include <fstream>
-#include <vector>
-#include <list>
-#include <algorithm>
-#include <D3Dcompiler.h>
 #include <D3Dcommon.h>
-
+#include <D3Dcompiler.h>
 #include <pga/rendering/D3DException.h>
 #include <pga/rendering/D3DShader.h>
+
+#include <algorithm>
+#include <fstream>
+#include <list>
+#include <string.h>
+#include <vector>
 
 namespace PGA
 {
@@ -15,10 +15,8 @@ namespace PGA
 	{
 		namespace D3D
 		{
-			//////////////////////////////////////////////////////////////////////////
 			std::vector<std::string> g_includePaths;
 
-			//////////////////////////////////////////////////////////////////////////
 			bool openShaderFileStream(
 				std::string& fileName, 
 				std::ifstream& file,
@@ -56,7 +54,6 @@ namespace PGA
 				return false;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			class ShaderIncludeManager : public ID3DInclude
 			{
 			private:
@@ -97,10 +94,8 @@ namespace PGA
 
 			};
 
-			//////////////////////////////////////////////////////////////////////////
 			std::unique_ptr<ShaderIncludeManager> g_shaderIncludeManager = nullptr;
 
-			//////////////////////////////////////////////////////////////////////////
 			ShaderIncludeManager* getShaderIncludeManager()
 			{
 				if (g_shaderIncludeManager == nullptr)
@@ -140,7 +135,6 @@ namespace PGA
 				return pPixelShader;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			void Shader::setIncludePath(const std::initializer_list<std::string>& includePaths)
 			{
 				g_includePaths.clear();
@@ -157,7 +151,6 @@ namespace PGA
 				}
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			Shader::Shader(ID3D11Device* device, ID3D10Blob* vertexShaderBinary, ID3D10Blob* pixelShaderBinary) :
 				vertexShader(createVertexShader(device, vertexShaderBinary)),
 				pixelShader(createPixelShader(device, pixelShaderBinary)),

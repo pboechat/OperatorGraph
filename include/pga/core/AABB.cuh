@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cfloat>
-#include <cuda_runtime_api.h>
+#include "ConvexRightPrism.cuh"
 
+#include <cuda_runtime_api.h>
 #include <math/math.h>
 #include <math/vector.h>
 
-#include "ConvexRightPrism.cuh"
+#include <cfloat>
 
 namespace PGA
 {

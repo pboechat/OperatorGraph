@@ -1,24 +1,20 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-
 #include "GlobalConstants.h"
-#include "Triangulation.cuh"
 #include "Shapes.cuh"
+#include "Triangulation.cuh"
+
+#include <cuda_runtime_api.h>
+#include <math/vector.h>
 
 namespace PGA
 {
-	//////////////////////////////////////////////////////////////////////////
 	template <typename FilterT, unsigned int IndexT>
 	struct GenerationFunction;
 
-	//////////////////////////////////////////////////////////////////////////
 	template <typename ShapeT, bool ParallelT>
 	struct ShapeGenerator;
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int MaxNumVerticesT>
 	struct ShapeGenerator < Shapes::DynamicRightPrism<MaxNumVerticesT, true>, false >
 	{
@@ -103,7 +99,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int MaxNumVerticesT>
 	struct ShapeGenerator < Shapes::DynamicRightPrism<MaxNumVerticesT, false>, false >
 	{
@@ -182,7 +177,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int NumSidesT, bool RegularT>
 	struct ShapeGenerator < Shapes::ConvexRightPrism<NumSidesT, RegularT>, false >
 	{
@@ -266,7 +260,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int NumSidesT, bool RegularT>
 	struct ShapeGenerator < Shapes::ConvexRightPrism<NumSidesT, RegularT>, true >
 	{
@@ -380,7 +373,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <>
 	struct ShapeGenerator < Shapes::Box, false >
 	{
@@ -519,16 +511,13 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <>
 	struct ShapeGenerator < Shapes::Box, true >
 	{
 		static const unsigned int NumThreads = 12;
 
 		// NOTES:
-		//
 		// - THREAD x FACE:
-		//
 		// 0 = BACK
 		// 1 = FRONT
 		// 2 = BACK
@@ -541,7 +530,6 @@ namespace PGA
 		// 9 = TOP
 		// 10 = BOTTOM
 		// 11 = TOP
-		//
 		// - THREAD x (VERTEX INDEX & COORDS.):
 		// 0 = 1 -> (1, 1, -1), 0 -> (-1, 1, -1) *BACK*
 		// 1 = 5 -> (-1, 1, 1), 4 -> (1, 1, 1) *FRONT*
@@ -555,7 +543,6 @@ namespace PGA
 		// 9 = 21 -> (-1, 1, -1), 20 -> (1, 1, -1) *TOP*
 		// 10 = 19 -> (1, -1, -1), 18 -> (-1, -1, -1) *BOTTOM*
 		// 11 = 23 -> (1, 1, 1), 22 -> (-1, 1, 1) *TOP*
-		//
 		// - THREAD x (VERTEX INDEX & INDEX):
 		// 0 = 0 -> 0, 1 -> 12
 		// 1 = 4 -> 1, 5 -> 13
@@ -569,7 +556,6 @@ namespace PGA
 		// 9 = 20 -> 9, 21 -> 21
 		// 10 = 18 -> 10, 19 -> 22
 		// 11 = 22 -> 11, 23 -> 23
-		//
 		// - THREAD x TRIANGLE:
 		// 0 = 0, 12, 2
 		// 1 = 1, 13, 3
@@ -649,7 +635,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int NumSidesT, bool RegularT>
 	struct ShapeGenerator < Shapes::ConvexPolygon<NumSidesT, RegularT>, false >
 	{
@@ -682,7 +667,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <>
 	struct ShapeGenerator < Shapes::Quad, false >
 	{
@@ -760,7 +744,6 @@ namespace PGA
 
 	};
 	
-	//////////////////////////////////////////////////////////////////////////
 	template <bool RegularT>
 	struct ShapeGenerator < Shapes::ConvexPolygon<3, RegularT>, false >
 	{
@@ -798,7 +781,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int MaxNumVerticesT>
 	struct ShapeGenerator < Shapes::DynamicPolygon<MaxNumVerticesT, true>, false >
 	{
@@ -832,7 +814,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <unsigned int MaxNumVerticesT>
 	struct ShapeGenerator < Shapes::DynamicPolygon<MaxNumVerticesT, false>, false >
 	{
@@ -873,7 +854,6 @@ namespace PGA
 
 	};
 
-	//////////////////////////////////////////////////////////////////////////
 	template <>
 	struct ShapeGenerator < Shapes::Sphere, false >
 	{

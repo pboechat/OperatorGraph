@@ -2,22 +2,17 @@
 #include <pga/compiler/Operator.h>
 #include <pga/compiler/PhaseVisitor.h>
 
-#ifdef VERBOSE
-#include <chrono>
-#endif
 #include <algorithm>
-#include <iterator>
+#include <chrono>
 #include <deque>
-#include <tuple>
-#ifdef _DEBUG
 #include <initializer_list>
-#endif
+#include <iterator>
+#include <tuple>
 
 namespace PGA
 {
 	namespace Compiler
 	{
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Graph(const Graph& other) : vertices(other.vertices.begin(), other.vertices.end()), edges(other.edges.begin(), other.edges.end()), adjacenciesList(other.adjacenciesList.begin(), other.adjacenciesList.end())
 		{
 		}
@@ -560,7 +555,6 @@ namespace PGA
 			depthFirst(GetParents(parents));
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::Partition(const Graph* source) : source(source), matchGroups(nullptr)
 		{
 		}
@@ -735,7 +729,6 @@ namespace PGA
 			matchGroups->computeDiffs();
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::SubGraph::SubGraph(const Graph* source) : source(source)
 		{
 		}
@@ -972,7 +965,6 @@ namespace PGA
 			adjacenciesList[in].push_back(std::make_pair(out, ref));
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::MatchGroups::MatchGroup::MatchGroup(MatchGroups* source, size_t srcIdx) : source(source), srcIdx(srcIdx)
 		{
 		}
@@ -1101,13 +1093,10 @@ namespace PGA
 						// NOTE: Checking if edges are mapped in increasing order.
 						// In other words, the index of a edge mapping can never be smaller then the index of the next edge mapping.
 						// i.e:
-						//
 						//		S											S
 						//    /   \         should never be mapped to     /	  \
 												//	T       R									R'		T'
-						//
 						//     because T' mapping idx is 0 while R' mapping idx is 1
-						//
 						auto it5 = minParamIdxMap.find(entry.first);
 						if (it5 != minParamIdxMap.end())
 						{
@@ -1437,7 +1426,6 @@ namespace PGA
 			}
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::MatchGroups::MatchGroup::Match::Match(
 			const MatchGroup* group,
 			size_t dstIdx,
@@ -1453,7 +1441,6 @@ namespace PGA
 		{
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::MatchGroups::MatchGroup::VertexDiff::VertexDiff(
 			OperatorType opType,
 			ShapeType shapeType,
@@ -1502,7 +1489,6 @@ namespace PGA
 			diffTermAttrs.insert(it->second.begin(), it->second.end());
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::MatchGroups::MatchGroup::EdgeDiff::EdgeDiff(
 			const MatchGroup* source,
 			bool requiresParam,
@@ -1523,7 +1509,6 @@ namespace PGA
 		{
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Graph::Partition::SubGraph::MatchResult& Graph::Partition::SubGraph::MatchResult::operator+=(const MatchResult& other)
 		{
 			vertexMap.insert(other.vertexMap.begin(), other.vertexMap.end());

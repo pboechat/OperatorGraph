@@ -1,13 +1,13 @@
 #pragma once
 
-#include <cfloat>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
-#include "Shapes.cuh"
 #include "AABB.cuh"
+#include "Shapes.cuh"
+
+#include <cuda_runtime_api.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+
+#include <cfloat>
 
 namespace PGA
 {

@@ -1,16 +1,15 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
+#include "AABB.cuh"
+#include "ContextSensitivityDeviceVariables.cuh"
 #include "DebugFlags.h"
 #include "GlobalConstants.h"
-#include "ContextSensitivityDeviceVariables.cuh"
 #include "Shapes.cuh"
-#include "AABB.cuh"
 #include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+#include <math/matrix.h>
+#include <math/vector.h>
 
 namespace PGA
 {

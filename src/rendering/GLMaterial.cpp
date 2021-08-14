@@ -1,7 +1,7 @@
-#include <iterator>
+#include <pga/rendering/GLMaterial.h>
+#include <pga/rendering/GLShader.h>
 
-#include "../include/pga/rendering/GLShader.h"
-#include "../include/pga/rendering/GLMaterial.h"
+#include <iterator>
 
 namespace PGA
 {

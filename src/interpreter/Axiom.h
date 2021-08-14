@@ -1,10 +1,9 @@
 #pragma once
 
-#include <math/vector.h>
-
-#include <pga/compiler/ShapeType.h>
-
 #include "Constants.h"
+
+#include <math/vector.h>
+#include <pga/compiler/ShapeType.h>
 
 struct Axiom
 {

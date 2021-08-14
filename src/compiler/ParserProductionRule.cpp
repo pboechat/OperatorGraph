@@ -1,16 +1,15 @@
+#include "ParserOperator.h"
+#include "ParserProductionRule.h"
+#include "ParserSymbol.h"
+#include "ParserUtils.h"
+
+#include <boost/variant/get.hpp>
+#include <pga/compiler/Operator.h>
+#include <pga/compiler/Symbol.h>
+
 #include <algorithm>
 #include <cctype>
 #include <functional>
-
-#include <boost/variant/get.hpp>
-
-#include <pga/compiler/Symbol.h>
-#include <pga/compiler/Operator.h>
-
-#include "ParserUtils.h"
-#include "ParserOperator.h"
-#include "ParserSymbol.h"
-#include "ParserProductionRule.h"
 
 namespace PGA
 {

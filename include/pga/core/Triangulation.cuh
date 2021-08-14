@@ -1,24 +1,23 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <stdexcept>
+#include "GeometryUtils.h"
+#include "LinkedList.cuh"
+
 #include <cuda_runtime_api.h>
 
-#include "LinkedList.cuh"
-#include "GeometryUtils.h"
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 namespace PGA
 {
 	namespace Triangulation
 	{
-		//////////////////////////////////////////////////////////////////////////
 		__host__ __device__ __inline__ float side(const math::float2& a, const math::float2& b)
 		{
 			return (a.x * b.y - a.y * b.x);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		__host__ __device__ __inline__ float angle(const math::float2& a, const math::float2& b)
 		{
 			// NOTE: due to imprecision, dot(a,b)/(length(a)*length(b)) can lead to values
@@ -29,7 +28,6 @@ namespace PGA
 			return c;
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int N>
 		__host__ __device__ __inline__ bool isEar(
 			math::float2 vertices[N],
@@ -61,7 +59,6 @@ namespace PGA
 			return true;
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int N>
 		__host__ __device__ __inline__ bool isReflex(math::float2 vertices[N], unsigned int numVertices, int i0, int i1, int i2)
 		{
@@ -75,7 +72,6 @@ namespace PGA
 			return d >= (math::constants<float>::pi() - EPSILON);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int N>
 		__host__ __device__ __inline__ void update(
 			math::float2 vertices[N],
@@ -122,7 +118,6 @@ namespace PGA
 			}
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int N>
 		__host__ __device__ __inline__ bool earClipping(math::float2 vertices[N], unsigned int numVertices, unsigned int indices[(N - 2) * 3])
 		{

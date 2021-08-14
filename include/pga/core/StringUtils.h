@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
-#include <string.h>
-#include <string>
-#include <sstream>
-#include <functional>
-#include <cctype>
-
 #include <math/vector.h>
+
+#include <cctype>
+#include <functional>
+#include <sstream>
+#include <string>
+#include <string.h>
+#include <vector>
 
 namespace PGA
 {

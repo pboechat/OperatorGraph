@@ -1,14 +1,14 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-#include <d3d11.h>
+#include "D3DInstancedTriangleMeshSource.h"
+#include "D3DMesh.h"
+#include "InstancedTriangleMeshData.h"
 
+#include <d3d11.h>
 #include <math/vector.h>
 
-#include "D3DMesh.h"
-#include "D3DInstancedTriangleMeshSource.h"
-#include "InstancedTriangleMeshData.h"
+#include <memory>
+#include <vector>
 
 namespace PGA
 {

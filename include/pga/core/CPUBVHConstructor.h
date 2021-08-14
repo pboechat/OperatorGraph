@@ -7,6 +7,7 @@ namespace PGA
 		namespace CPU
 		{
 			class BVHConstructor;
+
 		}
 
 	}

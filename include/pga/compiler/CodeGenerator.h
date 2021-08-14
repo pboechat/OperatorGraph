@@ -1,6 +1,8 @@
-#include <ostream>
+#pragma once
 
 #include <pga/compiler/Graph.h>
+
+#include <ostream>
 
 namespace PGA
 {

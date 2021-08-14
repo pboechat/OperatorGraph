@@ -1,13 +1,13 @@
 #pragma once
 
-#include <map>
-#include <memory>
-#include <tuple>
+#include "GLTexture.h"
 
 #include <math/matrix.h>
 #include <math/vector.h>
 
-#include "GLTexture.h"
+#include <map>
+#include <memory>
+#include <tuple>
 
 namespace PGA
 {

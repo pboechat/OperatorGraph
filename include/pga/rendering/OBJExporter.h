@@ -1,10 +1,10 @@
 #pragma once
 
-#include <string>
-#include <ostream>
-#include <vector>
-
 #include <math/vector.h>
+
+#include <ostream>
+#include <string>
+#include <vector>
 
 namespace PGA
 {

@@ -1,9 +1,9 @@
+#include <pga/rendering/CPUD3DTriangleMesh.h>
+#include <pga/rendering/D3DException.h>
+
 #include <cstdio>
 #include <cstring>
 #include <stdexcept>
-
-#include <pga/rendering/D3DException.h>
-#include <pga/rendering/CPUD3DTriangleMesh.h>
 
 namespace PGA
 {

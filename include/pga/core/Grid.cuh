@@ -1,15 +1,14 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
+#include "CUDAException.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
-#include "CUDAException.h"
-#include "Shapes.cuh"
 #include "Random.cuh"
+#include "Shapes.cuh"
+
+#include <cuda_runtime_api.h>
+#include <math/matrix.h>
+#include <math/vector.h>
 
 using namespace PGA::Shapes;
 

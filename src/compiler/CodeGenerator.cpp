@@ -1,27 +1,25 @@
-#include <vector>
+#include <math/vector.h>
+#include <pga/compiler/CodeGenerator.h>
+#include <pga/compiler/EnumUtils.h>
+#include <pga/compiler/MatchGroupVisitor.h>
+#include <pga/compiler/OperatorType.h>
+#include <pga/compiler/Parameters.h>
+#include <pga/compiler/ShapeType.h>
+#include <pga/core/GeometryUtils.h>
+#include <pga/core/GlobalConstants.h>
+
+#include <cassert>
+#include <cmath>
 #include <map>
 #include <memory>
 #include <sstream>
-#include <cmath>
-#include <cassert>
 #include <stdexcept>
-
-#include <math/vector.h>
-
-#include <pga/core/GeometryUtils.h>
-#include <pga/core/GlobalConstants.h>
-#include <pga/compiler/ShapeType.h>
-#include <pga/compiler/OperatorType.h>
-#include <pga/compiler/EnumUtils.h>
-#include <pga/compiler/Parameters.h>
-#include <pga/compiler/MatchGroupVisitor.h>
-#include <pga/compiler/CodeGenerator.h>
+#include <vector>
 
 namespace PGA
 {
 	namespace Compiler
 	{
-		//////////////////////////////////////////////////////////////////////////
 		struct Connection_
 		{
 			long edgeIdx;
@@ -41,7 +39,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct Operator_
 		{
 			OperatorType type;
@@ -71,7 +68,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct Procedure_
 		{
 			std::map<size_t, Operator_> vertexIdxToOp;
@@ -113,7 +109,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct ProcedureListCodeGenerator : MatchGroupVisitor /* */
 		{
 			std::map<size_t, size_t> opCodeMap;
@@ -1242,7 +1237,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct DispatchTableCodeGenerator : MatchGroupVisitor
 		{
 			std::map<size_t, size_t> entryMap;
@@ -1677,27 +1671,23 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		void CodeGenerator::fromPartition(std::ostream& out, const Graph::PartitionPtr& partition)
 		{
 			bool unused;
 			fromPartition(out, partition, unused);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		void CodeGenerator::fromPartition(std::ostream& out, const Graph::PartitionPtr& partition, bool optimized, bool instrumented)
 		{
 			bool unused;
 			fromPartition(out, partition, optimized, instrumented, unused);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		void CodeGenerator::fromPartition(std::ostream& out, const Graph::PartitionPtr& partition, bool& staticFirstProcedure)
 		{
 			fromPartition(out, partition, false, false, staticFirstProcedure);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		void CodeGenerator::fromPartition(std::ostream& out, const Graph::PartitionPtr& partition, bool optimized, bool instrumented, bool& staticFirstProcedure)
 		{
 #if defined(PGA_INVARIANT_CHECKING_LVL) && (PGA_INVARIANT_CHECKING_LVL >= 1)

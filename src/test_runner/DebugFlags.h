@@ -1,7 +1,7 @@
 #pragma once
 
-#include <pga/core/Statistics.h>
 #include <pga/core/DebugFlags.h>
+#include <pga/core/Statistics.h>
 #include <pga/core/TStdLib.h>
 
 namespace T

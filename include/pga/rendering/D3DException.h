@@ -1,7 +1,8 @@
 #pragma once
 
-#include <exception>
 #include <d3d11.h>
+
+#include <exception>
 
 namespace PGA
 {

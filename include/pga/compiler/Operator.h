@@ -1,13 +1,13 @@
 #pragma once
 
-#include <pga/compiler/Successor.h>
+#include <pga/compiler/OperatorType.h>
 #include <pga/compiler/Parameters.h>
 #include <pga/compiler/ShapeType.h>
-#include <pga/compiler/OperatorType.h>
+#include <pga/compiler/Successor.h>
 
-#include <vector>
-#include <memory>
 #include <initializer_list>
+#include <memory>
+#include <vector>
 
 namespace PGA
 {

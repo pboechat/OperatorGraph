@@ -1,21 +1,21 @@
 #pragma once
 
-#include <cstdint>
-#include <memory>
-#include <map>
-#include <string>
-#include <sstream>
-#include <iostream>
-
-#include <procedureInterface.cuh>
-#include <queueInterface.cuh>
-#include <procinfoTemplate.cuh>
-#include <queuingMultiPhase.cuh>
-#include <techniqueInterface.h>
-
 #include "CUDAException.h"
 #include "Experiment.h"
 #include "Instrumentation.h"
+
+#include <procedureInterface.cuh>
+#include <procinfoTemplate.cuh>
+#include <queueInterface.cuh>
+#include <queuingMultiPhase.cuh>
+#include <techniqueInterface.h>
+
+#include <cstdint>
+#include <iostream>
+#include <map>
+#include <memory>
+#include <sstream>
+#include <string>
 
 static const char* events[] = {
 	"atom_count",
@@ -229,7 +229,6 @@ namespace PGA
 
 		};
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
 		void NoSchedMothership::init(unsigned int numSubGraphs, unsigned int numEdges)
 		{
 			this->numSubGraphs = numSubGraphs;

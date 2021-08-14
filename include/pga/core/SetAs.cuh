@@ -1,26 +1,25 @@
 #pragma once
 
-#include <string>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-
+#include "Axis.h"
 #include "DebugFlags.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
-#include "Axis.h"
+#include "Parameters.cuh"
 #include "Shapes.cuh"
 #include "Symbol.cuh"
-#include "TStdLib.h"
 #include "SymbolDecorator.cuh"
-#include "Parameters.cuh"
+#include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+#include <math/vector.h>
+
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {
 	namespace Operators
 	{
-		//////////////////////////////////////////////////////////////////////////
 		template <typename NextOperatorT, typename NewShapeT, typename... Verts1T>
 		class SetAs
 		{
@@ -104,7 +103,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename NewShapeT, typename... Verts1T>
 		class SetAs < PGA::Parameters::DynParams, NewShapeT, Verts1T... >
 		{
@@ -155,19 +153,15 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename NextOperatorT, typename... Verts1T>
 		class SetAsDynamicConvexPolygon : public SetAs < NextOperatorT, Shapes::DynamicPolygon<PGA::Constants::MaxNumSides, true>, Verts1T... > {};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename NextOperatorT, typename... Verts1T>
 		class SetAsDynamicConvexRightPrism : public SetAs < NextOperatorT, Shapes::DynamicRightPrism<PGA::Constants::MaxNumSides, true>, Verts1T... > {};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename NextOperatorT, typename... Verts1T>
 		class SetAsDynamicConcavePolygon : public SetAs < NextOperatorT, Shapes::DynamicPolygon<PGA::Constants::MaxNumSides, false>, Verts1T... > {};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename NextOperatorT, typename... Verts1T>
 		class SetAsDynamicConcaveRightPrism : public SetAs < NextOperatorT, Shapes::DynamicRightPrism<PGA::Constants::MaxNumSides, false>, Verts1T... > {};
 

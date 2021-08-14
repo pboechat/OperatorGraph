@@ -4,8 +4,8 @@
 
 #include <sstream>
 #include <stack>
-#include <vector>
 #include <string>
+#include <vector>
 
 struct DotGraphVisitor : PGA::Compiler::GraphVisitor, PGA::Compiler::PartitionVisitor
 {

@@ -1,11 +1,11 @@
 #pragma once
 
+#include <pga/compiler/EnumUtils.h>
 #include <pga/compiler/OperatorType.h>
 #include <pga/compiler/ShapeType.h>
-#include <pga/compiler/EnumUtils.h>
 
-#include <vector>
 #include <initializer_list>
+#include <vector>
 
 namespace PGA
 {
@@ -13,7 +13,6 @@ namespace PGA
 	{
 		class ProcedureList;
 
-		//////////////////////////////////////////////////////////////////////////
 		class SingleOperatorProcedure
 		{
 		private:
@@ -36,7 +35,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class ProcedureList
 		{
 		private:

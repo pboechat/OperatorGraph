@@ -2,23 +2,21 @@
 
 #include "ScenesCommons.cuh"
 
-#include <pga/core/GlobalConstants.h>
-#include <pga/core/DispatchTable.h>
-#include <pga/core/Proc.cuh>
-#include <pga/core/Operators.cuh>
-#include <pga/core/Shapes.cuh>
-#include <pga/core/Parameters.cuh>
-#include <pga/core/Axis.h>
-#include <pga/core/TStdLib.h>
-#include <pga/core/Grid.cuh>
-#include <pga/rendering/SingleTerminalTraits.cuh>
-#include <pga/rendering/ShapeMesh.cuh>
-
-
 #include <cuda_runtime_api.h>
+#include <pga/core/Axis.h>
+#include <pga/core/DispatchTable.h>
+#include <pga/core/GlobalConstants.h>
+#include <pga/core/Grid.cuh>
+#include <pga/core/Operators.cuh>
+#include <pga/core/Parameters.cuh>
+#include <pga/core/Proc.cuh>
+#include <pga/core/Shapes.cuh>
+#include <pga/core/TStdLib.h>
+#include <pga/rendering/ShapeMesh.cuh>
+#include <pga/rendering/SingleTerminalTraits.cuh>
 
-#include <string>
 #include <map>
+#include <string>
 
 using namespace PGA;
 using namespace PGA::Operators;

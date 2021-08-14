@@ -1,21 +1,21 @@
 #pragma once
 
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <vector>
-#include <tuple>
-#include <stdexcept>
-
-#include <pga/compiler/Vertex.h>
 #include <pga/compiler/Edge.h>
 #include <pga/compiler/GraphVisitor.h>
-#include <pga/compiler/PartitionVisitor.h>
 #include <pga/compiler/MatchGroupVisitor.h>
 #include <pga/compiler/OperatorType.h>
-#include <pga/compiler/ShapeType.h>
 #include <pga/compiler/Parameters.h>
+#include <pga/compiler/PartitionVisitor.h>
+#include <pga/compiler/ShapeType.h>
+#include <pga/compiler/Vertex.h>
+
+#include <map>
+#include <set>
+#include <stdexcept>
+#include <tuple>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 namespace PGA
 {

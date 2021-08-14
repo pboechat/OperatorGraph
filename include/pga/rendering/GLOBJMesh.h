@@ -1,20 +1,18 @@
 #pragma once
 
-#include <vector>
-#include <string>
-#include <memory>
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GL/glew.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
 #include "GLInstancedTriangleMeshSource.h"
-// NOTE: https://github.com/syoyo/tinyobjloader
 #include "tiny_obj_loader.h"
 
+#include <GL/glew.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+#include <windows.h>
+
+#include <memory>
+#include <string>
+#include <vector>
+
+// NOTE: https://github.com/syoyo/tinyobjloader
 namespace PGA
 {
 	namespace Rendering

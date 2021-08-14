@@ -1,9 +1,8 @@
 #pragma once
 
+#include <cuda_runtime_api.h>
 #include <pga/core/GlobalConstants.h>
 #include <pga/core/Shapes.cuh>
-
-#include <cuda_runtime_api.h>
 
 namespace PGA
 {

@@ -1,11 +1,10 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-
 #include "ContextSensitivityConstants.cuh"
 #include "IntermediateSymbol.cuh"
+
+#include <cuda_runtime_api.h>
+#include <math/vector.h>
 
 namespace PGA
 {

@@ -1,12 +1,10 @@
-#include <stdexcept>
-#ifdef _WIN32
-#include <windows.h>
-#endif
 #include <GL/glew.h>
 #include <cuda_gl_interop.h>
-
 #include <pga/core/CUDAException.h>
 #include <pga/rendering/GPUGLInstancedTriangleMesh.h>
+#include <windows.h>
+
+#include <stdexcept>
 
 namespace PGA
 {

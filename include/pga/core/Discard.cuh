@@ -1,11 +1,12 @@
 #pragma once
 
-#include <string>
-#include <cuda_runtime_api.h>
-
 #include "DebugFlags.h"
 #include "Shapes.cuh"
 #include "Symbol.cuh"
+
+#include <cuda_runtime_api.h>
+
+#include <string>
 
 namespace PGA
 {

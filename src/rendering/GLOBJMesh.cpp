@@ -1,14 +1,14 @@
+#include <pga/rendering/GLColorShader.h>
+#include <pga/rendering/GLException.h>
+#include <pga/rendering/GLOBJMesh.h>
+#include <pga/rendering/GLPNG.h>
+#include <pga/rendering/GLTexture.h>
+#include <pga/rendering/GLTexturedShader.h>
+#include <pga/rendering/RenderingConstants.h>
+#include <pga/rendering/TriangleMeshData.h>
+
 #include <cassert>
 #include <stdexcept>
-
-#include <pga/rendering/GLException.h>
-#include <pga/rendering/RenderingConstants.h>
-#include <pga/rendering/GLTexture.h>
-#include <pga/rendering/GLPNG.h>
-#include <pga/rendering/GLColorShader.h>
-#include <pga/rendering/GLTexturedShader.h>
-#include <pga/rendering/TriangleMeshData.h>
-#include <pga/rendering/GLOBJMesh.h>
 
 namespace PGA
 {
@@ -16,7 +16,6 @@ namespace PGA
 	{
 		namespace GL
 		{
-			//////////////////////////////////////////////////////////////////////////
 			OBJMesh::OBJMesh(const std::string& fileName) : pendingSync(false)
 			{
 				std::string result = tinyobj::LoadObj(objShapes, objMaterials, fileName.c_str());
@@ -123,7 +122,6 @@ namespace PGA
 				return c;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			OBJMesh::OBJShape::OBJShape(const tinyobj::shape_t& objShape) : shape(objShape)
 			{
 			}

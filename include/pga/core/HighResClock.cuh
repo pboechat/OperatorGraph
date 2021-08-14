@@ -1,8 +1,8 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
 #include "HighResClock.h"
+
+#include <cuda_runtime_api.h>
 
 namespace PGA
 {

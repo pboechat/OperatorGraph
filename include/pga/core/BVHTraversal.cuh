@@ -1,16 +1,17 @@
 #pragma once
 
-#include <cstdio>
-#include <cuda_runtime_api.h>
-
+#include "Collision.cuh"
+#include "ContextSensitivityDeviceVariables.cuh"
 #include "DebugFlags.h"
 #include "GlobalConstants.h"
-#include "ContextSensitivityDeviceVariables.cuh"
-#include "Shapes.cuh"
-#include "RadixTree.h"
-#include "Collision.cuh"
 #include "IntermediateSymbolsBufferAdapter.cuh"
+#include "RadixTree.h"
+#include "Shapes.cuh"
 #include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+
+#include <cstdio>
 
 namespace PGA
 {

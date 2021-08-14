@@ -1,19 +1,19 @@
 #pragma once
 
-#include <cstdio>
-#include <string>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-
+#include "BVHTraversal.cuh"
 #include "DebugFlags.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
 #include "Shape.cuh"
-#include "BVHTraversal.cuh"
 #include "Symbol.cuh"
-#include "TStdLib.h"
 #include "SymbolDecorator.cuh"
+#include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+#include <math/vector.h>
+
+#include <cstdio>
+#include <string>
 
 namespace PGA
 {

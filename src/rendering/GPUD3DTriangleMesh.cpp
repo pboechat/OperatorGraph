@@ -1,12 +1,11 @@
-#include <cstdio>
-#include <vector>
-#include <stdexcept>
 #include <cuda_d3d11_interop.h>
-
 #include <math/vector.h>
-
 #include <pga/core/CUDAException.h>
 #include <pga/rendering/GPUD3DTriangleMesh.h>
+
+#include <cstdio>
+#include <stdexcept>
+#include <vector>
 
 namespace PGA
 {

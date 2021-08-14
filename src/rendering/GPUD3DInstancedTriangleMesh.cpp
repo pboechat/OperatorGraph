@@ -1,8 +1,8 @@
-#include <stdexcept>
 #include <cuda_d3d11_interop.h>
-
 #include <pga/core/CUDAException.h>
 #include <pga/rendering/GPUD3DInstancedTriangleMesh.h>
+
+#include <stdexcept>
 
 namespace PGA
 {

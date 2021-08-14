@@ -1,16 +1,14 @@
 #pragma once
 
-#include <pga/core/GlobalConstants.h>
 #include <pga/core/DynamicPolygon.cuh>
 #include <pga/core/DynamicRightPrism.cuh>
+#include <pga/core/GlobalConstants.h>
 
-//////////////////////////////////////////////////////////////////////////
 typedef PGA::Shapes::DynamicPolygon<PGA::Constants::MaxNumSides, true> DCPoly;
 typedef PGA::Shapes::DynamicPolygon<PGA::Constants::MaxNumSides, false> DPoly;
 typedef PGA::Shapes::DynamicRightPrism<PGA::Constants::MaxNumSides, true> DCRPrism;
 typedef PGA::Shapes::DynamicRightPrism<PGA::Constants::MaxNumSides, false> DRPrism;
 
-//////////////////////////////////////////////////////////////////////////
 // Test control methods
 std::string getTestName();
 std::string getSceneName();
@@ -29,7 +27,6 @@ void setAttributeValue(unsigned int value);
 void maximizeNumElements();
 bool isInstrumented();
 
-//////////////////////////////////////////////////////////////////////////
 // PGA control methods
 void initializePGA();
 double executePGA();

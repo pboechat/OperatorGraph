@@ -1,10 +1,7 @@
 #pragma once
 
-#if defined(_WIN32)
 #include <windows.h>
-#else
-#include <sys/time.h>
-#endif
+
 #include <chrono>
 
 namespace PGA

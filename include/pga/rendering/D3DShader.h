@@ -1,15 +1,15 @@
 #pragma once
 
-#include <string>
-#include <memory>
-#include <initializer_list>
-#include <d3d11.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
 #include "CameraParameters.h"
 #include "D3DMaterial.h"
+
+#include <d3d11.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+
+#include <initializer_list>
+#include <memory>
+#include <string>
 
 namespace PGA
 {

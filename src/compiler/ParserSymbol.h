@@ -1,8 +1,8 @@
 #pragma once
 
-#include <string>
-
 #include "ParserElement.h"
+
+#include <string>
 
 namespace PGA
 {

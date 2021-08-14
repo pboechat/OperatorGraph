@@ -1,17 +1,15 @@
-#include <stdexcept>
-
 #include <math/vector.h>
-
-#include <pga/core/PackUtils.h>
-#include <pga/core/EnumUtils.h>
-#include <pga/compiler/ShapeAttribute.h>
 #include <pga/compiler/Parameters.h>
+#include <pga/compiler/ShapeAttribute.h>
+#include <pga/core/EnumUtils.h>
+#include <pga/core/PackUtils.h>
+
+#include <stdexcept>
 
 namespace PGA
 {
 	namespace Compiler
 	{
-		//////////////////////////////////////////////////////////////////////////
 		bool Parameter::compareValues(const std::vector<double>& otherValues) const
 		{
 			if (values.size() != otherValues.size()) return false;
@@ -35,7 +33,6 @@ namespace PGA
 			return parameterLength;
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Scalar::Scalar(double value)
 		{
 			values.push_back(value);
@@ -46,7 +43,6 @@ namespace PGA
 			return ParameterType::PT_SCALAR;
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		// Source: http://stackoverflow.com/questions/9843999/calculate-number-of-decimal-places-for-a-float-value-without-libraries
 		void Scalar::getValueAndNegativeOrderOfMagnitude(double dValue, int& iValue, unsigned int& negativeOrderOfMagnitude)
 		{
@@ -97,7 +93,6 @@ namespace PGA
 			return compareValues(otherParam->values);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Axis::Axis(PGA::Axis axis)
 		{
 			values.push_back(static_cast<double>(axis));
@@ -135,7 +130,6 @@ namespace PGA
 			return compareValues(otherParam->values);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		RepeatMode::RepeatMode(PGA::RepeatMode repeatMode)
 		{
 			values.push_back(static_cast<double>(repeatMode));
@@ -173,7 +167,6 @@ namespace PGA
 			return compareValues(otherParam->values);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Rand::Rand(double min, double max, double seed /*= 0*/)
 		{
 			values.push_back(min); 
@@ -220,7 +213,6 @@ namespace PGA
 			return compareValues(otherParam->values);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		ShapeAttr::ShapeAttr(ShapeAttribute type) : type(type)
 		{
 		}
@@ -388,7 +380,6 @@ namespace PGA
 			}
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Vec2::Vec2(double x, double y)
 		{
 			this->values.push_back(x);
@@ -435,7 +426,6 @@ namespace PGA
 			return compareValues(otherParam->values);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		Exp::Exp(OperationType operationType, std::shared_ptr<Parameter> leftOperand, std::shared_ptr<Parameter> rightOperand) : operationType(operationType), leftOperand(leftOperand), rightOperand(rightOperand)
 		{
 			parameterLength = leftOperand->getParameterLength() + rightOperand->getParameterLength() + 1;
@@ -503,7 +493,6 @@ namespace PGA
 
 }
 
-//////////////////////////////////////////////////////////////////////////
 std::ostream& operator<<(std::ostream& os, const PGA::Compiler::Parameter& obj)
 {
 	obj.print(os);

@@ -1,29 +1,28 @@
+#include "CommonGraphOperations.h"
+#include "DotGraphVisitor.h"
+#include "HeuristicsTest.h"
+#include "OperatorGraphAnalyzerApp.h"
+#include "ParseUtils.h"
+#include "PartitionOutputter.h"
+#include "SamplingStrategies.h"
+#include "SearchHeuristics.h"
+
+#include <pga/compiler/Context.h>
+#include <pga/compiler/DispatchTableGenerator.h>
+#include <pga/compiler/Graph.h>
+#include <pga/compiler/Logger.h>
+#include <pga/compiler/Parser.h>
+#include <pga/core/EnumUtils.h>
+#include <pga/core/GPUTechnique.h>
+#include <pga/core/StringUtils.h>
+
+#include <cmath>
 #include <fstream>
+#include <initializer_list>
 #include <streambuf>
 #include <string>
 #include <vector>
-#include <initializer_list>
-#include <cmath>
 
-#include <pga/core/StringUtils.h>
-#include <pga/core/GPUTechnique.h>
-#include <pga/core/EnumUtils.h>
-#include <pga/compiler/Parser.h>
-#include <pga/compiler/DispatchTableGenerator.h>
-#include <pga/compiler/Context.h>
-#include <pga/compiler/Graph.h>
-#include <pga/compiler/Logger.h>
-
-#include "DotGraphVisitor.h"
-#include "SearchHeuristics.h"
-#include "PartitionOutputter.h"
-#include "HeuristicsTest.h"
-#include "SamplingStrategies.h"
-#include "ParseUtils.h"
-#include "CommonGraphOperations.h"
-#include "OperatorGraphAnalyzerApp.h"
-
-//////////////////////////////////////////////////////////////////////////
 void abort_(const std::string& message = "")
 {
 	if (!message.empty())
@@ -32,7 +31,6 @@ void abort_(const std::string& message = "")
 	exit(-1);
 }
 
-//////////////////////////////////////////////////////////////////////////
 bool containsExactly(std::set<size_t>& set, const std::initializer_list<size_t>& list) /* */
 {
 	if (list.size() != set.size()) return false;
@@ -42,7 +40,6 @@ bool containsExactly(std::set<size_t>& set, const std::initializer_list<size_t>&
 	return true;
 }
 
-//////////////////////////////////////////////////////////////////////////
 template <typename T>
 bool containsExactly(std::map<size_t, T>& map, const std::initializer_list<size_t>& list) /* */
 {
@@ -53,7 +50,6 @@ bool containsExactly(std::map<size_t, T>& map, const std::initializer_list<size_
 	return true;
 }
 
-//////////////////////////////////////////////////////////////////////////
 const long long DEF_QMEM = 2150L;
 const long DEF_GRIDX = 16;
 const long DEF_GRIDY = 16;
@@ -68,7 +64,6 @@ const auto DEF_SEED = -1L;
 const auto MATCH_GROUPS = 1u;
 const auto OPTIMIZE_CODE = 2u;
 
-//////////////////////////////////////////////////////////////////////////
 PGA::Compiler::ProcedureList procedures = {
 	// BOX
 	{ PGA::Compiler::TRANSLATE, PGA::Compiler::BOX, 0 },
@@ -192,7 +187,6 @@ PGA::Compiler::ProcedureList procedures = {
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 int OperatorGraphAnalyzerApp::run(unsigned int argc, const char** argv)
 {
     std::string pgaSourceFilePath;

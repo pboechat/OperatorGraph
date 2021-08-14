@@ -1,8 +1,7 @@
 #pragma once
 
-#include <pga/compiler/ShapeType.h>
-
 #include <math/vector.h>
+#include <pga/compiler/ShapeType.h>
 
 #include <string>
 #include <vector>

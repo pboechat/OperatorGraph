@@ -1,7 +1,7 @@
 #pragma once
 
-#include <pga/core/Shapes.cuh>
 #include <pga/compiler/ShapeType.h>
+#include <pga/core/Shapes.cuh>
 
 namespace PGA
 {

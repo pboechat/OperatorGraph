@@ -1,9 +1,7 @@
 #pragma once
 
-#ifdef _WIN32
-#include <intrin.h>
-#endif
 #include <cuda_runtime_api.h>
+#include <intrin.h>
 
 namespace PGA
 {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <pga/core/Operators.cuh>
 #include <pga/compiler/OperatorType.h>
-#include <pga/compiler/ShapeToShapeType.cuh>
 #include <pga/compiler/ProcedureList.h>
+#include <pga/compiler/ShapeToShapeType.cuh>
+#include <pga/core/Operators.cuh>
 
 namespace PGA
 {
@@ -321,7 +321,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureListT, unsigned int LengthT, unsigned int IndexT>
 		struct ProcedureListBuilder_Iterator
 		{
@@ -347,7 +346,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureListT>
 		struct ProcedureListBuilder
 		{

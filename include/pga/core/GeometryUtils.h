@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <algorithm>
-
 #include <math/vector.h>
+
+#include <algorithm>
+#include <vector>
 
 #define EPSILON 0.000001f
 

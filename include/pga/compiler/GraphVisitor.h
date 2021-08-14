@@ -1,7 +1,7 @@
 #pragma once
 
-#include <pga/compiler/Vertex.h>
 #include <pga/compiler/Edge.h>
+#include <pga/compiler/Vertex.h>
 
 namespace PGA
 {

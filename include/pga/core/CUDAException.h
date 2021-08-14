@@ -1,8 +1,9 @@
 #pragma once
 
-#include <string>
-#include <exception>
 #include <cuda_runtime_api.h>
+
+#include <exception>
+#include <string>
 
 namespace PGA
 {

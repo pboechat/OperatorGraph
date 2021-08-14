@@ -1,11 +1,11 @@
 #pragma once
 
+#include "Instrumentation.h"
+#include "InstrumentationPackUtils.h"
+
 #include <fstream>
 #include <iosfwd>
 #include <string>
-
-#include "InstrumentationPackUtils.h"
-#include "Instrumentation.h"
 
 namespace PGA
 {

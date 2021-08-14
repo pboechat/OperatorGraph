@@ -1,13 +1,12 @@
-#include <sstream>
-#include <fstream>
-#include <windows.h>
-
-#include <pga/core/StringUtils.h>
-#include <pga/compiler/CodeGenerator.h>
-
 #include "PartitionOutputter.h"
 
-//////////////////////////////////////////////////////////////////////////
+#include <pga/compiler/CodeGenerator.h>
+#include <pga/core/StringUtils.h>
+#include <windows.h>
+
+#include <fstream>
+#include <sstream>
+
 PartitionOutputter::PartitionOutputter(
 	unsigned int optimization, 
 	bool instrumented, 
@@ -40,7 +39,6 @@ bool PartitionOutputter::operator()(size_t i, PGA::Compiler::Graph::PartitionPtr
 	return true;
 }
 
-//////////////////////////////////////////////////////////////////////////
 FilesPartitionOutputter::FilesPartitionOutputter(
 	const std::string& outputDir, 
 	unsigned int optimization, 
@@ -121,7 +119,6 @@ void FilesPartitionOutputter::processPartition(size_t i, PGA::Compiler::Graph::P
 	srcFile.close();
 }
 
-//////////////////////////////////////////////////////////////////////////
 StreamsPartitionOutputter::StreamsPartitionOutputter(
 	std::ostream& connStream, 
 	std::ostream& dotStream, 

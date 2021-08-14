@@ -1,32 +1,31 @@
-#include <string>
-#include <cassert>
-#include <stdexcept>
-#include <sstream>
-#include <iostream>
-#include <iomanip>
-#include <gl/glew.h>
-#include <windowsx.h>
-#include <cuda_runtime_api.h>
-#include <cuda_gl_interop.h>
-
-#include <math/matrix.h>
-#include <pga/core/GlobalVariables.cuh>
-#include <pga/core/CUDAException.h>
-#include <pga/rendering/RenderingGlobalVariables.cuh>
-#include <pga/rendering/GLException.h>
-#include <pga/rendering/Texture.h>
-#include <pga/rendering/PNG.h>
-#include <pga/rendering/InstancedTriangleMeshSource.h>
-#include <pga/rendering/ShapeMesh.h>
-#include <pga/rendering/OBJMesh.h>
-#include <pga/rendering/Shader.h>
-#include <pga/rendering/ColorShader.h>
-#include <pga/rendering/TexturedShader.h>
-
 #include "PGAFacade.h"
 #include "TestRunnerApp.h"
 
-//////////////////////////////////////////////////////////////////////////
+#include <cuda_gl_interop.h>
+#include <cuda_runtime_api.h>
+#include <gl/glew.h>
+#include <math/matrix.h>
+#include <pga/core/CUDAException.h>
+#include <pga/core/GlobalVariables.cuh>
+#include <pga/rendering/ColorShader.h>
+#include <pga/rendering/GLException.h>
+#include <pga/rendering/InstancedTriangleMeshSource.h>
+#include <pga/rendering/OBJMesh.h>
+#include <pga/rendering/PNG.h>
+#include <pga/rendering/RenderingGlobalVariables.cuh>
+#include <pga/rendering/Shader.h>
+#include <pga/rendering/ShapeMesh.h>
+#include <pga/rendering/Texture.h>
+#include <pga/rendering/TexturedShader.h>
+#include <windowsx.h>
+
+#include <cassert>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+
 enum ReturnValue
 {
 	RV_SUCCESS = 0,
@@ -42,7 +41,6 @@ enum ReturnValue
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 #define win32Assert(resultHandle, errorMessage) \
 	if (resultHandle == 0) \
 		{ \
@@ -51,10 +49,8 @@ enum ReturnValue
 			exit(RV_WINDOWS_API_ERROR); \
 		} \
 
-//////////////////////////////////////////////////////////////////////////
 class GeneratorBufferOverflow : public std::exception {};
 
-//////////////////////////////////////////////////////////////////////////
 std::unique_ptr<PGA::Rendering::Texture2D> loadTexture2D(std::string& fileName)
 {
 	std::string filenameExtension = fileName.substr(fileName.rfind('.') + 1, fileName.size() - 1);
@@ -65,7 +61,6 @@ std::unique_ptr<PGA::Rendering::Texture2D> loadTexture2D(std::string& fileName)
 		return nullptr;
 }
 
-//////////////////////////////////////////////////////////////////////////
 TestRunnerApp* TestRunnerApp::s_instance = 0;
 const char* TestRunnerApp::WINDOW_TITLE = "test_runner";
 const char* TestRunnerApp::WINDOW_CLASS_NAME = "test_runner_window";
@@ -80,7 +75,6 @@ const float TestRunnerApp::ANGLE_INCREMENT = 0.05f;
 const float TestRunnerApp::CAMERA_PITCH_LIMIT = 1.0472f; // 60 deg.
 const float TestRunnerApp::CAMERA_MOVE_SPEED = 100.0f;
 
-//////////////////////////////////////////////////////////////////////////
 TestRunnerApp::TestRunnerApp() :
 	applicationHandle(0),
 	windowHandle(0),
@@ -103,13 +97,11 @@ TestRunnerApp::TestRunnerApp() :
 	s_instance = this;
 }
 
-//////////////////////////////////////////////////////////////////////////
 TestRunnerApp::~TestRunnerApp()
 {
 	s_instance = nullptr;
 }
 
-//////////////////////////////////////////////////////////////////////////
 double TestRunnerApp::generateGeometry()
 {
 	if (generator == nullptr)
@@ -122,7 +114,6 @@ double TestRunnerApp::generateGeometry()
 	return generationTime;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::createMaterial(int materialRef)
 {
 	auto it = configuration.materials.find(materialRef);
@@ -176,7 +167,6 @@ void TestRunnerApp::createMaterial(int materialRef)
 	materials.emplace(materialRef, std::move(newMaterial));
 }
 
-//////////////////////////////////////////////////////////////////////////
 std::vector<std::unique_ptr<PGA::Rendering::TriangleMesh>> TestRunnerApp::createTriangleMeshes()
 {
 	std::vector<std::unique_ptr<PGA::Rendering::TriangleMesh>> triangleMeshes;
@@ -196,7 +186,6 @@ std::vector<std::unique_ptr<PGA::Rendering::TriangleMesh>> TestRunnerApp::create
 	return triangleMeshes;
 }
 
-//////////////////////////////////////////////////////////////////////////
 std::vector<std::unique_ptr<PGA::Rendering::InstancedTriangleMesh>> TestRunnerApp::createInstancedTriangleMeshes()
 {
 	std::vector<std::unique_ptr<PGA::Rendering::InstancedTriangleMesh>> instancedTriangleMeshes;
@@ -270,7 +259,6 @@ std::vector<std::unique_ptr<PGA::Rendering::InstancedTriangleMesh>> TestRunnerAp
 	return instancedTriangleMeshes;
 }
 
-//////////////////////////////////////////////////////////////////////////
 bool TestRunnerApp::hasBufferOverflow()
 {
 	bool overflow = false;
@@ -302,7 +290,6 @@ bool TestRunnerApp::hasBufferOverflow()
 	return overflow;
 }
 
-//////////////////////////////////////////////////////////////////////////
 // This method exists because we cannot guarantee that resources 
 // from neither GL or CUDA can be deallocated, so we simply release them
 void TestRunnerApp::finalizePGAWithException()
@@ -313,10 +300,8 @@ void TestRunnerApp::finalizePGAWithException()
 	releasePGA();
 }
 
-//////////////////////////////////////////////////////////////////////////
 int TestRunnerApp::run(unsigned int argc, const char** argv)
 {
-	//////////////////////////////////////////////////////////////////////////
 	// Read command line arguments
 
 	int deviceIndex = argc > 1 ? atoi(argv[1]) : 0;
@@ -368,7 +353,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////
 	// Setting up pseudo-random number generator
 
 	if (globalSeed >= 0)
@@ -376,7 +360,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 	else
 		prng.seed((unsigned long)std::chrono::system_clock::now().time_since_epoch().count());
 
-	//////////////////////////////////////////////////////////////////////////
 	// Create window
 
 	applicationHandle = GetModuleHandle(0);
@@ -406,7 +389,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 	SetForegroundWindow(windowHandle);
 	SetFocus(windowHandle);
 
-	//////////////////////////////////////////////////////////////////////////
 	// Initialize GLEW
 
 	if (glewInit())
@@ -420,7 +402,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 	int returnValue = RV_SUCCESS;
 	try
 	{
-		//////////////////////////////////////////////////////////////////////////
 		// One-time initialization
 
 		cudaDeviceProp deviceProp;
@@ -470,7 +451,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 
 		glGenBuffers(1, &cameraUniformBuffer);
 
-		//////////////////////////////////////////////////////////////////////////
 		// Main application loop
 
 		MSG message;
@@ -544,7 +524,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 
 		glDeleteBuffers(1, &cameraUniformBuffer);
 
-		//////////////////////////////////////////////////////////////////////////
 		// Finalize PGA
 		materials.clear();
 		generator = 0;
@@ -608,7 +587,6 @@ int TestRunnerApp::run(unsigned int argc, const char** argv)
 	return returnValue;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::dispose()
 {
 	if (openGLRenderingContextHandle)
@@ -619,43 +597,36 @@ void TestRunnerApp::dispose()
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::moveCameraLeft(float deltaTime)
 {
 	camera.position() -= camera.u() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::moveCameraRight(float deltaTime)
 {
 	camera.position() += camera.u() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::moveCameraForward(float deltaTime)
 {
 	camera.position() += camera.w() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::moveCameraBackward(float deltaTime)
 {
 	camera.position() -= camera.w() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::moveCameraUp(float deltaTime)
 {
 	camera.position() += camera.v() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::moveCameraDown(float deltaTime)
 {
 	camera.position() -= camera.v() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::drawScene()
 {
 	Camera::UniformBuffer cameraBuffer;
@@ -700,7 +671,6 @@ void TestRunnerApp::drawScene()
 	SwapBuffers(deviceContextHandle);
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::processKeys(float deltaTime)
 {
 	if (pressedKeys[VK_ESCAPE])
@@ -806,20 +776,17 @@ void TestRunnerApp::processKeys(float deltaTime)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::keyDown(unsigned int virtualKey)
 {
 	keys[virtualKey] = true;
 	pressedKeys[virtualKey] = true;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::keyUp(unsigned int virtualKey)
 {
 	keys[virtualKey] = false;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::mouseButtonDown(unsigned int button, int x, int y)
 {
 	if (button == MK_LBUTTON)
@@ -829,7 +796,6 @@ void TestRunnerApp::mouseButtonDown(unsigned int button, int x, int y)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::mouseButtonUp(unsigned int button, int x, int y)
 {
 	if (button == MK_LBUTTON)
@@ -838,7 +804,6 @@ void TestRunnerApp::mouseButtonUp(unsigned int button, int x, int y)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::mouseMove(int x, int y)
 {
 	if (!mouseButtonPressed)
@@ -869,35 +834,30 @@ void TestRunnerApp::mouseMove(int x, int y)
 	lastMousePosition = mousePosition;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::turnCameraUp()
 {
 	cameraTheta = math::clamp(cameraTheta + ANGLE_INCREMENT, -CAMERA_PITCH_LIMIT, CAMERA_PITCH_LIMIT);
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::turnCameraDown()
 {
 	cameraTheta = math::clamp(cameraTheta - ANGLE_INCREMENT, -CAMERA_PITCH_LIMIT, CAMERA_PITCH_LIMIT);
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::turnCameraLeft()
 {
 	cameraPhi += ANGLE_INCREMENT /* NOTE: handiness sensitive */;
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::turnCameraRight()
 {
 	cameraPhi -= ANGLE_INCREMENT /* NOTE: handiness sensitive */;
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::updateCameraRotation()
 {
 	float cp = math::cos(cameraPhi);
@@ -912,7 +872,6 @@ void TestRunnerApp::updateCameraRotation()
 	camera.w() = w;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::generatePGASeeds()
 {
 	auto numAxioms = getNumAxioms();
@@ -926,7 +885,6 @@ void TestRunnerApp::generatePGASeeds()
 #endif
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::createGenerator()
 {
 	generator = std::unique_ptr<PGA::Rendering::Generator>(new PGA::Rendering::Generator());
@@ -948,7 +906,6 @@ void TestRunnerApp::createGenerator()
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::outputGeometryBuffersUsage()
 {
 	std::cout << "Geometry buffer usage: " << std::endl;
@@ -971,7 +928,6 @@ void TestRunnerApp::outputGeometryBuffersUsage()
 }
 
 
-//////////////////////////////////////////////////////////////////////////
 PGA::Rendering::OBJExporter::Material TestRunnerApp::createOBJMaterial(const std::string& name, const std::string& baseFilePath, PGA::Rendering::Configuration::Material& material) const
 {
 	PGA::Rendering::OBJExporter::Material objMaterial;
@@ -994,7 +950,6 @@ PGA::Rendering::OBJExporter::Material TestRunnerApp::createOBJMaterial(const std
 	return objMaterial;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void TestRunnerApp::exportToObj()
 {
 	std::ofstream objFile("generated_geometry.obj");
@@ -1032,7 +987,6 @@ void TestRunnerApp::exportToObj()
 	mtlFile.close();
 }
 
-//////////////////////////////////////////////////////////////////////////
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int x, y;

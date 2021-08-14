@@ -1,21 +1,21 @@
 #pragma once
 
-#include <cstdint>
-#include <stdexcept>
+#include "AABB.cuh"
+#include "BVH.cuh"
+#include "CUDAException.h"
+#include "GlobalVariables.cuh"
+#include "IntermediateSymbolsBufferAdapter.cuh"
+#include "RadixTree.h"
+
 #include <cuda_runtime_api.h>
 #include <device_functions.h>
+#include <math/math.h>
+#include <math/vector.h>
 #include <thrust/device_vector.h>
 #include <thrust/sort.h>
 
-#include <math/math.h>
-#include <math/vector.h>
-
-#include "GlobalVariables.cuh"
-#include "CUDAException.h"
-#include "AABB.cuh"
-#include "RadixTree.h"
-#include "BVH.cuh"
-#include "IntermediateSymbolsBufferAdapter.cuh"
+#include <cstdint>
+#include <stdexcept>
 
 #define DIVIDE_AND_ROUND_UP(x, y) ((x) + (y) - 1) / (y)
 #define COORD_LIM ((1 << 10)-1)

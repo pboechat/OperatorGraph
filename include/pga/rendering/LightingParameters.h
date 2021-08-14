@@ -13,14 +13,15 @@ namespace PGA
 			math::float4 direction;
 
 		};
+#pragma pack()
 
+#pragma pack(4)
 		struct LightingParameters
 		{
 			DLight dLights;
 
 		};
 #pragma pack()
-
 	}
 
 }

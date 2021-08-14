@@ -1,12 +1,12 @@
 #pragma once
 
+#include <pga/compiler/Axiom.h>
+#include <pga/compiler/Logger.h>
+#include <pga/compiler/Rule.h>
+#include <pga/core/DispatchTableEntry.h>
+
 #include <string>
 #include <vector>
-
-#include <pga/core/DispatchTableEntry.h>
-#include <pga/compiler/Axiom.h>
-#include <pga/compiler/Rule.h>
-#include <pga/compiler/Logger.h>
 
 namespace PGA
 {

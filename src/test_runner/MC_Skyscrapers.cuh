@@ -1,12 +1,14 @@
 #pragma once
 
-#include <map>
-#include <string>
-#include <math.h>
-#include <cuda_runtime_api.h>
+#include "SceneUtils.cuh"
 
+#include <cuda_runtime_api.h>
 #include <pga/core/Core.h>
 #include <pga/core/Grid.cuh>
+
+#include <map>
+#include <math.h>
+#include <string>
 
 using namespace PGA;
 using namespace PGA::Operators;

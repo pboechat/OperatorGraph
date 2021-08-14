@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cuda_runtime_api.h>
-
-#include "Shapes.cuh"
-#include "IntermediateSymbolsBuffer.cuh"
 #include "AABB.cuh"
 #include "BVH.cuh"
+#include "IntermediateSymbolsBuffer.cuh"
 #include "RadixTree.h"
+#include "Shapes.cuh"
+
+#include <cuda_runtime_api.h>
 
 namespace PGA
 {

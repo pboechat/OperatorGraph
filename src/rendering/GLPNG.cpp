@@ -1,14 +1,13 @@
-﻿#include <cstdio>
-#include <cmath>
-#include <iostream>
-#include <fstream>
-#include <stdexcept>
-
-#include <png.h>
-#include <math/math.h>
-
+﻿#include <math/math.h>
 #include <pga/rendering/GLException.h>
 #include <pga/rendering/GLPNG.h>
+#include <png.h>
+
+#include <cmath>
+#include <cstdio>
+#include <fstream>
+#include <iostream>
+#include <stdexcept>
 
 namespace PGA
 {

@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string.h>
-#include <vector>
-#include <cuda_runtime_api.h>
+#include "Axiom.h"
+#include "Constants.h"
 
+#include <cuda_runtime_api.h>
 #include <math/vector.h>
 #include <pga/core/CUDAException.h>
 
-#include "Constants.h"
-#include "Axiom.h"
+#include <string.h>
+#include <vector>
 
 #if defined(INTERPRETER_EXTERN)
 namespace Host

@@ -1,10 +1,10 @@
 #pragma once
 
-#include <vector>
-
 #include "ParserElement.h"
 #include "ParserOperand.h"
 #include "ParserSuccessor.h"
+
+#include <vector>
 
 namespace PGA
 {

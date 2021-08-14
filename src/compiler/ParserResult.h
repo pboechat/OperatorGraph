@@ -1,14 +1,15 @@
 #pragma once
 
-#include <vector>
-#include <list>
-
 #include "ParserAxiom.h"
 #include "ParserProductionRule.h"
 #include "ParserTerminal.h"
 #include "Terminal.h"
+
 #include <pga/compiler/Axiom.h>
 #include <pga/compiler/Rule.h>
+
+#include <list>
+#include <vector>
 
 namespace PGA
 {

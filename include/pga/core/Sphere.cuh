@@ -1,9 +1,10 @@
 #pragma once
 
-#include <string>
+#include "Shape.cuh"
+
 #include <cuda_runtime_api.h>
 
-#include "Shape.cuh"
+#include <string>
 
 namespace PGA
 {

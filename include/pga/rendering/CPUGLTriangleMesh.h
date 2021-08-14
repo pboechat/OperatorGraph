@@ -1,11 +1,11 @@
 #pragma once
 
-#include <vector>
+#include "GLBaseTriangleMesh.h"
+#include "TriangleMeshData.h"
 
 #include <math/vector.h>
 
-#include "TriangleMeshData.h"
-#include "GLBaseTriangleMesh.h"
+#include <vector>
 
 namespace PGA
 {

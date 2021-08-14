@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string.h>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-
-#include "GlobalConstants.h"
 #include "CUDAException.h"
 #include "DispatchTableEntry.h"
+#include "GlobalConstants.h"
+
+#include <cuda_runtime_api.h>
+#include <math/vector.h>
+
+#include <stdexcept>
+#include <string.h>
 
 #if defined(PGA_CORE_EXPORT)
 #    if (PGA_CORE_EXPORT == 1)

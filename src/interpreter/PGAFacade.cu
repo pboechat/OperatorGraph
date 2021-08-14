@@ -1,28 +1,26 @@
 #define PGA_CORE_EXPORT 0
 #define PGA_RENDERING_EXPORT 0
 
-#include <string.h>
-#include <stdexcept>
-
-// NOTE: DebugFlags.h have to come before Core.h because of partial template specializations!
 #include "DebugFlags.h"
-
-#include <pga/core/Core.h>
-#include <pga/core/GPUTechnique.h>
-#include <pga/compiler/ShapeType.h>
-#include <pga/compiler/OperatorType.h>
-#include <pga/rendering/GenerationFunctions.cuh>
-
 #include "GlobalVariables.cuh"
 #include "PGAFacade.h"
 
+#include <pga/compiler/OperatorType.h>
+#include <pga/compiler/ShapeType.h>
+#include <pga/core/Core.h>
+#include <pga/core/GPUTechnique.h>
+#include <pga/rendering/GenerationFunctions.cuh>
+
+#include <stdexcept>
+#include <string.h>
+
+// NOTE: DebugFlags.h have to come before Core.h because of partial template specializations!
 using namespace PGA;
 using namespace PGA::Shapes;
 using namespace PGA::Operators;
 using namespace PGA::Parameters;
 using namespace PGA::Compiler;
 
-//////////////////////////////////////////////////////////////////////////
 ProcedureList procedureList = {
 	// QUAD
 	{ DISCARD, QUAD, 0 },
@@ -353,7 +351,6 @@ ProcedureList procedureList = {
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 struct ProcList : T::List <
 	// QUAD
 	Proc<Quad, Discard>,
@@ -684,7 +681,6 @@ struct ProcList : T::List <
 
 > {};
 
-//////////////////////////////////////////////////////////////////////////
 struct AxiomGenerator
 {
 	static unsigned int getNumAxioms()
@@ -884,7 +880,6 @@ struct AxiomGenerator
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 struct Configuration
 {
 #if defined(PGA_CPU)
@@ -901,13 +896,11 @@ typedef PGA::SinglePhaseEvaluator<ProcList, AxiomGenerator, PGA::Rendering::GenF
 typedef std::unique_ptr<Evaluator, PGA::ReleaseCallback> EvaluatorPtr;
 EvaluatorPtr g_evaluator;
 
-//////////////////////////////////////////////////////////////////////////
 PGA::Compiler::ProcedureList getProcedureList()
 {
 	return procedureList;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void initializePGA(const std::unique_ptr<PGA::DispatchTable>& dispatchTable)
 {
 	if (!g_evaluator)
@@ -915,19 +908,16 @@ void initializePGA(const std::unique_ptr<PGA::DispatchTable>& dispatchTable)
 	g_evaluator->initialize(dispatchTable->toDispatchTableEntriesPtr().get(), dispatchTable->entries.size());
 }
 
-//////////////////////////////////////////////////////////////////////////
 void releasePGA()
 {
 	g_evaluator.release();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void destroyPGA()
 {
 	g_evaluator = 0;
 }
 
-//////////////////////////////////////////////////////////////////////////
 double executePGA()
 {
 	return g_evaluator->execute();

@@ -1,11 +1,10 @@
-#include <string>
-#include <memory>
-
+#include "../include/pga/rendering/D3DTexture.h"
 #include "DDSTextureLoader.h"
 
 #include <pga/rendering/D3DException.h>
 
-#include "../include/pga/rendering/D3DTexture.h"
+#include <memory>
+#include <string>
 
 namespace PGA
 {

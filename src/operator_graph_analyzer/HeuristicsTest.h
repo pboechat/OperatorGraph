@@ -1,8 +1,8 @@
 #pragma once
 
-#include <set>
-
 #include <pga/compiler/Graph.h>
+
+#include <set>
 
 enum ConfidenceLevel
 {

@@ -1,10 +1,10 @@
 #pragma once
 
+#include "Instrumentation.h"
+
 #include <fstream>
 #include <iosfwd>
 #include <string>
-
-#include "Instrumentation.h"
 
 namespace PGA
 {

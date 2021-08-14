@@ -1,43 +1,41 @@
-//#define VERBOSE
-
-#include <string>
-#include <cassert>
-#include <stdexcept>
-#include <sstream>
-#include <iostream>
-#include <iomanip>
-#include <gl/glew.h>
-#include <windowsx.h>
-#include <cuda_runtime_api.h>
-#include <cuda_gl_interop.h>
-
-#include <math/matrix.h>
-#include <pga/core/GlobalVariables.cuh>
-#include <pga/core/CUDAException.h>
-#include <pga/core/StringUtils.h>
-#include <pga/rendering/RenderingGlobalVariables.cuh>
-#include <pga/rendering/GLException.h>
-#include <pga/rendering/Texture.h>
-#include <pga/rendering/PNG.h>
-#include <pga/rendering/InstancedTriangleMeshSource.h>
-#include <pga/rendering/ShapeMesh.h>
-#include <pga/rendering/OBJMesh.h>
-#include <pga/rendering/Shader.h>
-#include <pga/rendering/ColorShader.h>
-#include <pga/rendering/TexturedShader.h>
-#include <pga/compiler/Parser.h>
-#include <pga/compiler/DispatchTableGenerator.h>
-#include <pga/compiler/Context.h>
-#include <pga/compiler/Graph.h>
-#include <pga/compiler/CodeGenerator.h>
+#define INTERPRETER_EXTERN
 
 #include "Constants.h"
-#include "PGAFacade.h"
-#define INTERPRETER_EXTERN
 #include "GlobalVariables.cuh"
 #include "InterpreterApp.h"
+#include "PGAFacade.h"
 
-//////////////////////////////////////////////////////////////////////////
+#include <cuda_gl_interop.h>
+#include <cuda_runtime_api.h>
+#include <gl/glew.h>
+#include <math/matrix.h>
+#include <pga/compiler/CodeGenerator.h>
+#include <pga/compiler/Context.h>
+#include <pga/compiler/DispatchTableGenerator.h>
+#include <pga/compiler/Graph.h>
+#include <pga/compiler/Parser.h>
+#include <pga/core/CUDAException.h>
+#include <pga/core/GlobalVariables.cuh>
+#include <pga/core/StringUtils.h>
+#include <pga/rendering/ColorShader.h>
+#include <pga/rendering/GLException.h>
+#include <pga/rendering/InstancedTriangleMeshSource.h>
+#include <pga/rendering/OBJMesh.h>
+#include <pga/rendering/PNG.h>
+#include <pga/rendering/RenderingGlobalVariables.cuh>
+#include <pga/rendering/Shader.h>
+#include <pga/rendering/ShapeMesh.h>
+#include <pga/rendering/Texture.h>
+#include <pga/rendering/TexturedShader.h>
+#include <windowsx.h>
+
+#include <cassert>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+
 #define win32Assert(resultHandle, errorMessage) \
 	if (resultHandle == 0) \
 		{ \
@@ -46,10 +44,8 @@
 			exit(EXIT_FAILURE); \
 		} \
 
-//////////////////////////////////////////////////////////////////////////
 class GeneratorBufferOverflow : public std::exception {};
 
-//////////////////////////////////////////////////////////////////////////
 struct CppSourceCodeCallback : PGA::Compiler::Graph::ComputePartitionCallback
 {
 	virtual bool operator()(std::size_t i, PGA::Compiler::Graph::PartitionPtr& partition)
@@ -62,7 +58,6 @@ struct CppSourceCodeCallback : PGA::Compiler::Graph::ComputePartitionCallback
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 std::unique_ptr<PGA::Rendering::Texture2D> loadTexture2D(std::string& fileName)
 {
 	std::string filenameExtension = fileName.substr(fileName.rfind('.') + 1, fileName.size() - 1);
@@ -73,7 +68,6 @@ std::unique_ptr<PGA::Rendering::Texture2D> loadTexture2D(std::string& fileName)
 		return nullptr;
 }
 
-//////////////////////////////////////////////////////////////////////////
 InterpreterApp* InterpreterApp::s_instance = 0;
 const char* InterpreterApp::WINDOW_TITLE = "interpreter";
 const char* InterpreterApp::WINDOW_CLASS_NAME = "interpreter_window";
@@ -88,7 +82,6 @@ const float InterpreterApp::ANGLE_INCREMENT = 0.05f;
 const float InterpreterApp::CAMERA_PITCH_LIMIT = 1.0472f; // 60 deg.
 const float InterpreterApp::CAMERA_MOVE_SPEED = 100.0f;
 
-//////////////////////////////////////////////////////////////////////////
 InterpreterApp::InterpreterApp() :
 	applicationHandle(0),
 	windowHandle(0),
@@ -111,13 +104,11 @@ InterpreterApp::InterpreterApp() :
 	s_instance = this;
 }
 
-//////////////////////////////////////////////////////////////////////////
 InterpreterApp::~InterpreterApp()
 {
 	s_instance = nullptr;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::freeAxioms()
 {
 	if (dAxioms)
@@ -131,7 +122,6 @@ void InterpreterApp::freeAxioms()
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::copyAxioms(std::vector<PGA::Compiler::Axiom>& compilerAxioms)
 {
 	if (compilerAxioms.empty())
@@ -182,7 +172,6 @@ void InterpreterApp::copyAxioms(std::vector<PGA::Compiler::Axiom>& compilerAxiom
 #endif
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::parse()
 {
 	freeAxioms();
@@ -246,7 +235,6 @@ void InterpreterApp::parse()
 #endif
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::interpret()
 {
 	parse();
@@ -259,7 +247,6 @@ void InterpreterApp::interpret()
 	generator->unbind();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::createMaterial(int materialRef)
 {
 	auto it = configuration.materials.find(materialRef);
@@ -366,7 +353,6 @@ void InterpreterApp::createMaterial(int materialRef)
 	materials.emplace(materialRef, std::move(newMaterial));
 }
 
-//////////////////////////////////////////////////////////////////////////
 std::vector<std::unique_ptr<PGA::Rendering::TriangleMesh>> InterpreterApp::createTriangleMeshes()
 {
 	std::vector<std::unique_ptr<PGA::Rendering::TriangleMesh>> triangleMeshes;
@@ -395,7 +381,6 @@ std::vector<std::unique_ptr<PGA::Rendering::TriangleMesh>> InterpreterApp::creat
 	return triangleMeshes;
 }
 
-//////////////////////////////////////////////////////////////////////////
 std::vector<std::unique_ptr<PGA::Rendering::InstancedTriangleMesh>> InterpreterApp::createInstancedTriangleMeshes()
 {
 	std::vector<std::unique_ptr<PGA::Rendering::InstancedTriangleMesh>> instancedTriangleMeshes;
@@ -489,7 +474,6 @@ std::vector<std::unique_ptr<PGA::Rendering::InstancedTriangleMesh>> InterpreterA
 	return instancedTriangleMeshes;
 }
 
-//////////////////////////////////////////////////////////////////////////
 bool InterpreterApp::hasBufferOverflow()
 {
 	bool overflow = false;
@@ -521,7 +505,6 @@ bool InterpreterApp::hasBufferOverflow()
 	return overflow;
 }
 
-//////////////////////////////////////////////////////////////////////////
 // This method exists because we cannot guarantee that resources 
 // from neither GL or CUDA can be deallocated, so we simply release them
 void InterpreterApp::finalizePGAWithException()
@@ -532,10 +515,8 @@ void InterpreterApp::finalizePGAWithException()
 	releasePGA();
 }
 
-//////////////////////////////////////////////////////////////////////////
 int InterpreterApp::run(unsigned int argc, const char** argv)
 {
-	//////////////////////////////////////////////////////////////////////////
 	// Read command line arguments
 
 	int deviceIndex = 0;
@@ -557,7 +538,12 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 			globalSeed = atol(value.c_str());
 	}
 
-	//////////////////////////////////////////////////////////////////////////
+	if (pgaSourceFilename.empty())
+	{
+		std::cout << "Usage: " << std::endl << "\tinterpreter.exe src=<path> [config=<path>] [device=<number>] [seed=<number>]" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+
 	// Setting up pseudo-random number generator
 
 	if (globalSeed >= 0)
@@ -565,7 +551,6 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 	else
 		prng.seed((unsigned long)std::chrono::system_clock::now().time_since_epoch().count());
 
-	//////////////////////////////////////////////////////////////////////////
 	// Create window
 
 	applicationHandle = GetModuleHandle(0);
@@ -595,7 +580,6 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 	SetForegroundWindow(windowHandle);
 	SetFocus(windowHandle);
 
-	//////////////////////////////////////////////////////////////////////////
 	// Initialize GLEW
 
 	if (glewInit())
@@ -609,7 +593,6 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 	int returnValue = EXIT_SUCCESS;
 	try
 	{
-		//////////////////////////////////////////////////////////////////////////
 		// One-time initialization
 
 		cudaDeviceProp deviceProp;
@@ -627,7 +610,6 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 
 		glGenBuffers(1, &cameraUniformBuffer);
 
-		//////////////////////////////////////////////////////////////////////////
 		// Main application loop
 
 		static bool firstTime = true;
@@ -669,7 +651,6 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 
 		glDeleteBuffers(1, &cameraUniformBuffer);
 
-		//////////////////////////////////////////////////////////////////////////
 		// Finalize PGA
 		materials.clear();
 		generator = 0;
@@ -723,7 +704,6 @@ int InterpreterApp::run(unsigned int argc, const char** argv)
 	return returnValue;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::dispose()
 {
 	if (openGLRenderingContextHandle)
@@ -734,43 +714,36 @@ void InterpreterApp::dispose()
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::moveCameraLeft(float deltaTime)
 {
 	camera.position() -= camera.u() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::moveCameraRight(float deltaTime)
 {
 	camera.position() += camera.u() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::moveCameraForward(float deltaTime)
 {
 	camera.position() += camera.w() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::moveCameraBackward(float deltaTime)
 {
 	camera.position() -= camera.w() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::moveCameraUp(float deltaTime)
 {
 	camera.position() += camera.v() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::moveCameraDown(float deltaTime)
 {
 	camera.position() -= camera.v() * deltaTime * CAMERA_MOVE_SPEED;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::drawScene()
 {
 	Camera::UniformBuffer cameraBuffer;
@@ -815,7 +788,6 @@ void InterpreterApp::drawScene()
 	SwapBuffers(deviceContextHandle);
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::processKeys(float deltaTime)
 {
 	if (pressedKeys[VK_ESCAPE])
@@ -844,20 +816,17 @@ void InterpreterApp::processKeys(float deltaTime)
 		outputGeometryBuffersUsage();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::keyDown(unsigned int virtualKey)
 {
 	keys[virtualKey] = true;
 	pressedKeys[virtualKey] = true;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::keyUp(unsigned int virtualKey)
 {
 	keys[virtualKey] = false;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::mouseButtonDown(unsigned int button, int x, int y)
 {
 	if (button == MK_LBUTTON)
@@ -867,7 +836,6 @@ void InterpreterApp::mouseButtonDown(unsigned int button, int x, int y)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::mouseButtonUp(unsigned int button, int x, int y)
 {
 	if (button == MK_LBUTTON)
@@ -876,7 +844,6 @@ void InterpreterApp::mouseButtonUp(unsigned int button, int x, int y)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::mouseMove(int x, int y)
 {
 	if (!mouseButtonPressed)
@@ -907,35 +874,30 @@ void InterpreterApp::mouseMove(int x, int y)
 	lastMousePosition = mousePosition;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::turnCameraUp()
 {
 	cameraTheta = math::clamp(cameraTheta + ANGLE_INCREMENT, -CAMERA_PITCH_LIMIT, CAMERA_PITCH_LIMIT);
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::turnCameraDown()
 {
 	cameraTheta = math::clamp(cameraTheta - ANGLE_INCREMENT, -CAMERA_PITCH_LIMIT, CAMERA_PITCH_LIMIT);
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::turnCameraLeft()
 {
 	cameraPhi += ANGLE_INCREMENT /* NOTE: handiness sensitive */;
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::turnCameraRight()
 {
 	cameraPhi -= ANGLE_INCREMENT /* NOTE: handiness sensitive */;
 	updateCameraRotation();
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::updateCameraRotation()
 {
 	float cp = math::cos(cameraPhi);
@@ -950,7 +912,6 @@ void InterpreterApp::updateCameraRotation()
 	camera.w() = w;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::createGenerator()
 {
 	generator = std::unique_ptr<PGA::Rendering::Generator>(new PGA::Rendering::Generator());
@@ -975,7 +936,6 @@ void InterpreterApp::createGenerator()
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::outputGeometryBuffersUsage()
 {
 	std::cout << "Geometry buffer usage: " << std::endl;
@@ -997,7 +957,6 @@ void InterpreterApp::outputGeometryBuffersUsage()
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 PGA::Rendering::OBJExporter::Material InterpreterApp::createOBJMaterial(const std::string& name, const std::string& baseFilePath, PGA::Rendering::Configuration::Material& material) const
 {
 	PGA::Rendering::OBJExporter::Material objMaterial;
@@ -1020,7 +979,6 @@ PGA::Rendering::OBJExporter::Material InterpreterApp::createOBJMaterial(const st
 	return objMaterial;
 }
 
-//////////////////////////////////////////////////////////////////////////
 void InterpreterApp::exportToObj()
 {
 	auto count = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
@@ -1059,7 +1017,6 @@ void InterpreterApp::exportToObj()
 	mtlFile.close();
 }
 
-//////////////////////////////////////////////////////////////////////////
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int x, y;

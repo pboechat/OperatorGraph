@@ -2,8 +2,8 @@
 
 #include <pga/compiler/Successor.h>
 
-#include <string>
 #include <memory>
+#include <string>
 
 namespace PGA
 {

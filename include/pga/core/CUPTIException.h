@@ -1,7 +1,8 @@
 #pragma once
 
-#include <stdexcept>
 #include <cupti.h>
+
+#include <stdexcept>
 
 namespace PGA
 {

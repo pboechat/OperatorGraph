@@ -1,7 +1,10 @@
-#include <iostream>
-#include <type_traits>
-#include <stdexcept>
+#pragma once
+
 #include <cuda_runtime_api.h>
+
+#include <iostream>
+#include <stdexcept>
+#include <type_traits>
 
 namespace PGA
 {

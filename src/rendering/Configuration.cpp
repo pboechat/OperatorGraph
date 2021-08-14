@@ -1,15 +1,14 @@
-#include <fstream>
-#include <algorithm>
-#include <sstream>
-#include <climits>
-#include <stdexcept>
-
-#include <rapidxml.h>
-
 #include <pga/core/GeometryUtils.h>
 #include <pga/core/StringUtils.h>
-#include <pga/rendering/RenderingConstants.h>
 #include <pga/rendering/Configuration.h>
+#include <pga/rendering/RenderingConstants.h>
+#include <rapidxml.h>
+
+#include <algorithm>
+#include <climits>
+#include <fstream>
+#include <sstream>
+#include <stdexcept>
 
 namespace
 {
@@ -151,7 +150,6 @@ namespace PGA
 {
 	namespace Rendering
 	{
-		//////////////////////////////////////////////////////////////////////////
 		void Configuration::reset()
 		{
 			textureRootPath = "";
@@ -197,7 +195,6 @@ namespace PGA
 				throw std::runtime_error("PGA::Rendering::Configuration::loadFromString(): missing instanced triangle mesh indices");
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		std::string Configuration::Material::getAttribute(const std::string& attributeName) const
 		{
 			const auto& it = attributes.find(attributeName);

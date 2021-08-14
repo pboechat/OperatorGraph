@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
-#include <memory>
-#include <fstream>
-#include <map>
-
 #include <pga/core/CSVExporter.h>
 #include <pga/core/CuptiExporter.h>
 #include <pga/core/EdgeExporter.h>
 #include <pga/core/SubGraphExporter.h>
+
+#include <fstream>
+#include <map>
+#include <memory>
+#include <string>
 
 class LogManager
 {

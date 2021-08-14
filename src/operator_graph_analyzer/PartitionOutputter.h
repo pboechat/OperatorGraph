@@ -1,15 +1,14 @@
 #pragma once
 
-#include <string>
-#include <ostream>
-
-#include <pga/core/GPUTechnique.h>
-#include <pga/compiler/Graph.h>
-
-#include "DotGraphVisitor.h"
 #include "ConnectionVisitor.h"
+#include "DotGraphVisitor.h"
 
-//////////////////////////////////////////////////////////////////////////
+#include <pga/compiler/Graph.h>
+#include <pga/core/GPUTechnique.h>
+
+#include <ostream>
+#include <string>
+
 struct PartitionOutputter : PGA::Compiler::Graph::ComputePartitionCallback
 {
 	PartitionOutputter(unsigned int optimization,
@@ -35,7 +34,6 @@ protected:
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 struct FilesPartitionOutputter : PartitionOutputter
 {
 	FilesPartitionOutputter(const std::string& outputDir,
@@ -54,7 +52,6 @@ private:
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 struct StreamsPartitionOutputter : PartitionOutputter
 {
 	StreamsPartitionOutputter(std::ostream& connStream,

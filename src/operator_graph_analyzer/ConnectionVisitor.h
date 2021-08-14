@@ -1,15 +1,14 @@
 #pragma once
 
-#include <string>
-#include <map>
-#include <vector>
-#include <ostream>
-
-#include <pga/compiler/Vertex.h>
 #include <pga/compiler/Edge.h>
 #include <pga/compiler/PartitionVisitor.h>
+#include <pga/compiler/Vertex.h>
 
-//////////////////////////////////////////////////////////////////////////
+#include <map>
+#include <ostream>
+#include <string>
+#include <vector>
+
 struct ConnectionVisitor : PGA::Compiler::PartitionVisitor
 {
 	ConnectionVisitor();
@@ -26,5 +25,4 @@ private:
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 std::ostream& operator<<(std::ostream& out, const ConnectionVisitor& obj);

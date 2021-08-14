@@ -1,10 +1,9 @@
 #pragma once
 
-#include <exception>
-#ifdef _WIN32
-#include <windows.h>
-#endif
 #include <GL/glew.h>
+#include <windows.h>
+
+#include <exception>
 
 namespace PGA
 {

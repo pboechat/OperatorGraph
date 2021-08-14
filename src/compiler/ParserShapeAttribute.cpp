@@ -1,8 +1,8 @@
-#include <stdexcept>
+#include "ParserShapeAttribute.h"
 
 #include <pga/compiler/ShapeAttribute.h>
 
-#include "ParserShapeAttribute.h"
+#include <stdexcept>
 
 namespace PGA
 {

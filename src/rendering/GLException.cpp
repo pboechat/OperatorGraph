@@ -1,6 +1,6 @@
-#include <string>
-
 #include <pga/rendering/GLException.h>
+
+#include <string>
 
 namespace PGA
 {

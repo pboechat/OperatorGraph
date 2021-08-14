@@ -1,10 +1,10 @@
-#include <cassert>
-#include <stdexcept>
-
+#include <pga/rendering/D3DException.h>
+#include <pga/rendering/D3DOBJMesh.h>
 #include <pga/rendering/RenderingConstants.h>
 #include <pga/rendering/TriangleMeshData.h>
-#include <pga/rendering/D3DOBJMesh.h>
-#include <pga/rendering/D3DException.h>
+
+#include <cassert>
+#include <stdexcept>
 
 namespace PGA
 {
@@ -12,7 +12,6 @@ namespace PGA
 	{
 		namespace D3D
 		{
-			//////////////////////////////////////////////////////////////////////////
 			OBJMesh::OBJMesh(const std::string& fileName) : pendingSync(false), instanceAttributesBuffer(nullptr)
 			{
 				std::string result = tinyobj::LoadObj(objShapes, objMaterials, fileName.c_str());
@@ -127,7 +126,6 @@ namespace PGA
 				return c;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			OBJMesh::OBJShape::OBJShape(const tinyobj::shape_t& objShape) : shape(objShape), vertexAttributesBuffer(nullptr), indexBuffer(nullptr)
 			{
 			}

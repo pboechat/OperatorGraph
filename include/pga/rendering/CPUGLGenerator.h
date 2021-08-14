@@ -1,18 +1,18 @@
 #pragma once
 
+#include "CPUGLInstancedTriangleMesh.h"
+#include "CPUGLTriangleMesh.h"
+#include "GLBaseGenerator.h"
+#include "GLMesh.h"
+#include "InstancedTriangleMeshData.h"
+#include "RenderingGlobalVariables.cuh"
+#include "TriangleMeshData.h"
+
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 // NOTE: cannot be moved to a CPP file because of RenderingGlobalVariables.cuh
-#include "RenderingGlobalVariables.cuh"
-#include "GLMesh.h"
-#include "CPUGLTriangleMesh.h"
-#include "CPUGLInstancedTriangleMesh.h"
-#include "TriangleMeshData.h"
-#include "InstancedTriangleMeshData.h"
-#include "GLBaseGenerator.h"
-
 namespace PGA
 {
 	namespace Rendering

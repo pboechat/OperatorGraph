@@ -1,13 +1,12 @@
 #pragma once
 
-#include <chrono>
-#include <random>
-#include <set>
-#include <map>
-
 #include <pga/compiler/Graph.h>
 
-//////////////////////////////////////////////////////////////////////////
+#include <chrono>
+#include <map>
+#include <random>
+#include <set>
+
 struct SamplingStrategy
 {
 	SamplingStrategy(const std::set<size_t>& alwaysCutEdges,
@@ -33,7 +32,6 @@ protected:
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 struct RandomSampling : public SamplingStrategy, public PGA::Compiler::Graph::ComputePartitionCallback
 {
 	RandomSampling(const std::set<size_t>& alwaysCutEdges,
@@ -60,7 +58,6 @@ private:
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 struct HeuristicsTestSampling : public SamplingStrategy
 {
 	HeuristicsTestSampling(const std::set<size_t>& alwaysCutEdges,

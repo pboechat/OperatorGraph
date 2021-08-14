@@ -1,11 +1,11 @@
-#include <algorithm>
-#include <stdexcept>
-
-#include <pga/core/DispatchTableEntry.h>
-#include <pga/core/GeometryUtils.h>
+#include <pga/compiler/DispatchTableGenerator.h>
 #include <pga/compiler/EnumUtils.h>
 #include <pga/compiler/Logger.h>
-#include <pga/compiler/DispatchTableGenerator.h>
+#include <pga/core/DispatchTableEntry.h>
+#include <pga/core/GeometryUtils.h>
+
+#include <algorithm>
+#include <stdexcept>
 
 namespace PGA
 {
@@ -25,7 +25,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		bool DispatchTableGenerator::visitSuccessor(size_t entryIdx, ShapeType shapeType, const std::shared_ptr<Successor>& successor, const ProcedureList& procedures, Logger& logger, std::deque<std::shared_ptr<Symbol>>& symbolsToVisit, const std::set<std::string>& visitedSymbols)
 		{
 			if (successor->getType() == SuccessorType::SYMBOL)
@@ -630,7 +629,6 @@ namespace PGA
 			return graph.depthFirst(visitor);
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		bool DispatchTableGenerator::BaseGraphVisitor::visit(size_t i, const Edge_LW& edge, const Vertex_LW& src, const Vertex_LW& dst)
 		{
 			return true;

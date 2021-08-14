@@ -1,9 +1,10 @@
 #pragma once
 
-#include <math.h>
+#include "OperandType.h"
+
 #include <cuda_runtime_api.h>
 
-#include "OperandType.h"
+#include <math.h>
 
 namespace PGA
 {

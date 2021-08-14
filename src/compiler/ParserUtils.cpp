@@ -1,8 +1,8 @@
+#include "ParserUtils.h"
+
 #include <algorithm>
 #include <cctype>
 #include <functional>
-
-#include "ParserUtils.h"
 
 namespace PGA
 {

@@ -1,16 +1,15 @@
 #pragma once
 
-#include <memory>
-
-#include <boost/variant/recursive_variant.hpp>
-
-#include <pga/compiler/Parameters.h>
-
 #include "ParserAxis.h"
+#include "ParserRand.h"
 #include "ParserRepeatMode.h"
 #include "ParserShapeAttribute.h"
 #include "ParserVec2.h"
-#include "ParserRand.h"
+
+#include <boost/variant/recursive_variant.hpp>
+#include <pga/compiler/Parameters.h>
+
+#include <memory>
 
 namespace PGA
 {

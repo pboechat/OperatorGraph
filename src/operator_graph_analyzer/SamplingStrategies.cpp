@@ -1,10 +1,9 @@
-#include <iostream>
-
-#include "HeuristicsTest.h"
 #include "CommonGraphOperations.h"
+#include "HeuristicsTest.h"
 #include "SamplingStrategies.h"
 
-//////////////////////////////////////////////////////////////////////////
+#include <iostream>
+
 SamplingStrategy::SamplingStrategy(const std::set<size_t>& alwaysCutEdges,
 	const std::set<size_t>& neverCutEdges, 
 	PGA::Compiler::Graph& graph) : 
@@ -37,7 +36,6 @@ void SamplingStrategy::computeSamples(long seed, const std::set<size_t>& graphAl
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////
 RandomSampling::RandomSampling(const std::set<size_t>& alwaysCutEdges, 
 	const std::set<size_t>& neverCutEdges, 
 	PGA::Compiler::Graph& graph, 
@@ -99,7 +97,6 @@ bool RandomSampling::operator()(size_t i, PGA::Compiler::Graph::PartitionPtr& pa
 	return true;
 }
 
-//////////////////////////////////////////////////////////////////////////
 HeuristicsTestSampling::HeuristicsTestSampling(const std::set<size_t>& alwaysCutEdges, 
 	const std::set<size_t>& neverCutEdges, 
 	PGA::Compiler::Graph& graph, 

@@ -1,11 +1,11 @@
-#include <vector>
-#include <fstream>
-#include <regex>
-#include <stdexcept>
-
 #include <pga/core/StringUtils.h>
 #include <pga/rendering/GLException.h>
 #include <pga/rendering/GLShader.h>
+
+#include <fstream>
+#include <regex>
+#include <stdexcept>
+#include <vector>
 
 namespace PGA
 {
@@ -13,10 +13,8 @@ namespace PGA
 	{
 		namespace GL
 		{
-			//////////////////////////////////////////////////////////////////////////
 			std::vector<std::string> g_includePaths;
 
-			//////////////////////////////////////////////////////////////////////////
 			bool getShaderCompileStatus(GLuint shader)
 			{
 				GLint status;
@@ -25,7 +23,6 @@ namespace PGA
 				return status == GL_TRUE;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			bool getProgramLinkStatus(GLuint program)
 			{
 				GLint status;
@@ -34,7 +31,6 @@ namespace PGA
 				return status == GL_TRUE;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			std::string getShaderInfoLog(GLuint shader)
 			{
 				GLint length;
@@ -48,7 +44,6 @@ namespace PGA
 				return log;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			std::string getProgramInfoLog(GLuint program)
 			{
 				GLint length;
@@ -62,7 +57,6 @@ namespace PGA
 				return log;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			void linkProgram(GLuint program)
 			{
 				glLinkProgram(program);
@@ -71,7 +65,6 @@ namespace PGA
 					throw std::runtime_error(getProgramInfoLog(program));
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			void compileShaderSource(GLuint shader, const std::string& source)
 			{
 				const GLchar* sourceCStr = source.c_str();
@@ -82,11 +75,9 @@ namespace PGA
 					throw std::runtime_error(getShaderInfoLog(shader));
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			// NOTE: forward declaration
 			std::string getShaderSource(const std::string& fileName);
 
-			//////////////////////////////////////////////////////////////////////////
 			std::string replaceIncludes(const std::string& shaderSource)
 			{
 				std::string newShaderSource(shaderSource);
@@ -103,7 +94,6 @@ namespace PGA
 				return newShaderSource;
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			std::string getShaderSource(const std::string& fileName)
 			{
 				for (auto& path : g_includePaths)
@@ -117,7 +107,6 @@ namespace PGA
 				throw std::runtime_error("PGA::Rendering::GL::getShaderSource(..): shader file couldn't be opened [fileName=" + fileName + "]");
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			GLuint compileShader(const std::string& fileName, GLenum type)
 			{
 				GLuint shader = glCreateShader(type);
@@ -125,7 +114,6 @@ namespace PGA
 				return shader;
 			} 
 
-			//////////////////////////////////////////////////////////////////////////
 			void Shader::setIncludePath(const std::initializer_list<std::string>& includePaths)
 			{
 				g_includePaths.clear();
@@ -142,7 +130,6 @@ namespace PGA
 				}
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			Shader::Shader(const std::string& vertexShaderFileName, const std::string& fragmentShaderFileName) :
 				program(glCreateProgram()),
 				vertexShader(compileShader(vertexShaderFileName, GL_VERTEX_SHADER)),

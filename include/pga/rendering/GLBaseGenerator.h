@@ -1,15 +1,15 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
+#include "GLMaterial.h"
+#include "GLMesh.h"
+#include "OBJExporter.h"
 
 #include <math/vector.h>
 
-#include "GLMesh.h"
-#include "GLMaterial.h"
-#include "OBJExporter.h"
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 namespace PGA
 {

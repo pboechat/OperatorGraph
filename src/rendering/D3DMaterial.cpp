@@ -1,8 +1,8 @@
-#include <iterator>
-
 #include <pga/rendering/D3DException.h>
-#include <pga/rendering/D3DShader.h>
 #include <pga/rendering/D3DMaterial.h>
+#include <pga/rendering/D3DShader.h>
+
+#include <iterator>
 
 namespace PGA
 {

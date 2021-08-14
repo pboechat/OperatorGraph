@@ -1,33 +1,32 @@
 #pragma once
 
-#include <cmath>
-#include <string>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
+#include "Axis.h"
 #include "DebugFlags.h"
+#include "DispatchTableEntry.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
-#include "Axis.h"
-#include "RepeatMode.h"
-#include "Shape.cuh"
-#include "ParameterType.h"
 #include "OperandType.h"
 #include "OperationType.h"
-#include "DispatchTableEntry.h"
-#include "Random.cuh"
-#include "Symbol.cuh"
 #include "PackUtils.h"
+#include "ParameterType.h"
+#include "Random.cuh"
+#include "RepeatMode.h"
+#include "Shape.cuh"
+#include "Symbol.cuh"
 #include "TStdLib.h"
+
+#include <cuda_runtime_api.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+
+#include <cmath>
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {
 	namespace Parameters
 	{
-		//////////////////////////////////////////////////////////////////////////
 		template <int ValueT, unsigned int NegativeOrderOfMagnitudeT = 0>
 		class Scalar
 		{
@@ -71,7 +70,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <int XT, int YT, unsigned int XNegativeOrderOfMagnitudeT = 3, unsigned int YNegativeOrderOfMagnitudeT = 3>
 		class Vec2
 		{
@@ -116,15 +114,12 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <PGA::Axis AxisT>
 		class AxisParam : public Scalar< AxisT, 0 > {};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <PGA::RepeatMode RepeatModeT>
 		class RepeatModeParam : public Scalar< RepeatModeT, 0 > {};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int IndexT>
 		struct ShapeAttr
 		{
@@ -151,7 +146,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <PGA::Axis AxisT>
 		struct ShapePos : public ShapeAttr<(AxisT + 1) * 4 - 1>
 		{
@@ -162,7 +156,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <PGA::Axis AxisT, PGA::Axis ComponentT>
 		struct ShapeRotation : public ShapeAttr<(ComponentT * 4) + AxisT>
 		{
@@ -173,11 +166,9 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <PGA::Axis ComponentT>
 		struct ShapeNormal : public ShapeRotation < PGA::Z, ComponentT > {};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <PGA::Axis AxisT>
 		struct ShapeSize : public ShapeAttr<(AxisT + 12)>
 		{
@@ -188,7 +179,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct ShapeSeed : public ShapeAttr<15>
 		{
 			__host__ __inline__ static std::string toString()
@@ -198,7 +188,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct ShapeCustomAttribute : public ShapeAttr<16>
 		{
 			__host__ __inline__ static std::string toString()
@@ -208,7 +197,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <int MinT, int MaxT, unsigned int MinNegativeOrderOfMagnitudeT = 0, unsigned int MaxNegativeOrderOfMagnitudeT = 0>
 		class Rand
 		{
@@ -258,7 +246,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename AT, typename BT, OperationType OpTypeT>
 		struct ExpOperator
 		{
@@ -313,7 +300,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Add : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_ADD >
 		{
@@ -327,7 +313,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Sub : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_SUB >
 		{
@@ -341,7 +326,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Multi : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_MULTI >
 		{
@@ -354,7 +338,6 @@ namespace PGA
 			}
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Div : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_DIV >
 		{
@@ -368,7 +351,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Eq : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_EQ >
 		{
@@ -382,7 +364,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Neq : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_NEQ >
 		{
@@ -396,7 +377,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Lt : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_LT >
 		{
@@ -410,7 +390,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Gt : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_GT >
 		{
@@ -424,7 +403,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Leq : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_LEQ >
 		{
@@ -439,7 +417,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Geq : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_GEQ >
 		{
@@ -453,7 +430,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct And : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_AND >
 		{
@@ -467,7 +443,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT>
 		struct Or : public ExpOperator < OperandAT, OperandBT, OperationType::OPT_OR >
 		{
@@ -481,7 +456,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename OperandAT, typename OperandBT, template <class, class> class OpT>
 		struct Exp
 		{
@@ -514,7 +488,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int LengthT>
 		struct Stack
 		{
@@ -542,7 +515,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename StackT>
 		struct EncExp
 		{
@@ -691,10 +663,8 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		typedef Stack<Constants::MaxNumExpLevels> ExpStack;
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename ShapeT>
 		__host__ __device__  __inline__ static float dynEval(const Symbol<ShapeT>* symbol, const DispatchTableEntry::Parameter& parameter)
 		{
@@ -740,7 +710,6 @@ namespace PGA
 			return 0;
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		template <typename ShapeT>
 		__host__ __device__ __inline__ static math::float2 dynToFloat2(const Symbol<ShapeT>* symbol, const DispatchTableEntry::Parameter& parameter)
 		{
@@ -772,7 +741,6 @@ namespace PGA
 			return math::float2();
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int ParamIdxT>
 		class DynParam
 		{

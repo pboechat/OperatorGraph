@@ -1,7 +1,7 @@
 #pragma once
 
-#include <memory>
 #include <algorithm>
+#include <memory>
 
 namespace PGA
 {

@@ -1,26 +1,25 @@
 #pragma once
 
-#include <cstdint>
-#include <cstdio>
-#include <string>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <procedureInterface.cuh>
-
+#include "ClockCycleCounter.cuh"
 #include "DebugFlags.h"
 #include "GlobalVariables.cuh"
+#include "Instrumentation.cuh"
 #include "Shape.cuh"
 #include "Symbol.cuh"
 #include "TStdLib.h"
-#include "Instrumentation.cuh"
-#include "ClockCycleCounter.cuh"
+
+#include <cuda_runtime_api.h>
+#include <procedureInterface.cuh>
+
+#include <cstdint>
+#include <cstdio>
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {
 	namespace Operators
 	{
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int OperationCodeT, unsigned int SuccessorOffsetT, int EdgeIndexT = -1>
 		class PSCall
 		{
@@ -136,7 +135,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int OperationCodeT, int PhaseIndexT, int EdgeIndexT = -1, int EntryIndexT = -1>
 		class FSCall
 		{
@@ -258,7 +256,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int SuccessorOffsetT, int EdgeIndexT = -1>
 		class DCall
 		{

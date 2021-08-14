@@ -1,6 +1,7 @@
 [Bb]uild/
 [Ll]ibs/
 [Oo]ut/
+[Bb]in/
 OPT*/
 __pycache__/
 

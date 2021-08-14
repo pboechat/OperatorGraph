@@ -1,8 +1,8 @@
 #pragma once
 
-#include <math/vector.h>
-
 #include "Shapes.cuh"
+
+#include <math/vector.h>
 
 namespace PGA
 {

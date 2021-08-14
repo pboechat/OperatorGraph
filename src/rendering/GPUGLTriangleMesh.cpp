@@ -1,17 +1,14 @@
-#include <cstdio>
-#include <vector>
-#include <stdexcept>
-#ifdef _WIN32
-#include <windows.h>
-#endif
 #include <GL/glew.h>
 #include <cuda_gl_interop.h>
-
 #include <math/vector.h>
-
 #include <pga/core/CUDAException.h>
 #include <pga/rendering/GLException.h>
 #include <pga/rendering/GPUGLTriangleMesh.h>
+#include <windows.h>
+
+#include <cstdio>
+#include <stdexcept>
+#include <vector>
 
 namespace PGA
 {

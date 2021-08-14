@@ -1,16 +1,15 @@
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
-#include <exception>
-
 #include <math/math.h>
-
-#include <pga/compiler/Vertex.h>
+#include <pga/compiler/EnumUtils.h>
 #include <pga/compiler/Graph.h>
 #include <pga/compiler/OperatorType.h>
-#include <pga/compiler/EnumUtils.h>
-#include <pga/core/GlobalConstants.h>
+#include <pga/compiler/Vertex.h>
 #include <pga/core/DispatchTableEntry.h>
+#include <pga/core/GlobalConstants.h>
+
+#include <algorithm>
+#include <exception>
+#include <iomanip>
+#include <sstream>
 
 namespace PGA
 {

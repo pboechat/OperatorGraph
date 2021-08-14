@@ -1,21 +1,20 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-#include <iostream>
-
-#include <pga/core/Axis.h>
-#include <pga/core/RepeatMode.h>
-#include <pga/core/ParameterType.h>
-#include <pga/core/OperationType.h>
-#include <pga/core/DispatchTable.h>
 #include <pga/compiler/ShapeAttribute.h>
+#include <pga/core/Axis.h>
+#include <pga/core/DispatchTable.h>
+#include <pga/core/OperationType.h>
+#include <pga/core/ParameterType.h>
+#include <pga/core/RepeatMode.h>
+
+#include <iostream>
+#include <memory>
+#include <vector>
 
 namespace PGA
 {
 	namespace Compiler
 	{
-		//////////////////////////////////////////////////////////////////////////
 		class Parameter
 		{
 		protected:
@@ -39,7 +38,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class Scalar : public Parameter
 		{
 		public:
@@ -56,7 +54,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class Axis : public Parameter
 		{
 		public:
@@ -71,7 +68,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class RepeatMode : public Parameter
 		{
 		public:
@@ -86,7 +82,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class Rand : public Parameter
 		{
 		public:
@@ -101,7 +96,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class ShapeAttr : public Parameter
 		{
 		private:
@@ -123,7 +117,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class Vec2 : public Parameter
 		{
 		public:
@@ -138,7 +131,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		class Exp : public Parameter
 		{
 		protected:
@@ -162,5 +154,4 @@ namespace PGA
 
 }
 
-//////////////////////////////////////////////////////////////////////////
 std::ostream& operator<<(std::ostream& os, const PGA::Compiler::Parameter& obj);

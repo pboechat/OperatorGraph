@@ -1,9 +1,9 @@
-#include <stdexcept>
+#include "ParserExpression.h"
+#include "ParserOperand.h"
 
 #include <boost/variant/get.hpp>
 
-#include "ParserOperand.h"
-#include "ParserExpression.h"
+#include <stdexcept>
 
 namespace PGA
 {

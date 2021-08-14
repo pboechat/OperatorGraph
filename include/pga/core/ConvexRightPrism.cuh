@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
+#include "ConvexPolygon.cuh"
+#include "Shape.cuh"
+#include "TStdLib.h"
 
+#include <cuda_runtime_api.h>
 #include <math/vector.h>
 
-#include "Shape.cuh"
-#include "ConvexPolygon.cuh"
-#include "TStdLib.h"
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {

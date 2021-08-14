@@ -1,15 +1,16 @@
 #pragma once
 
-#include <string>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-#include <vector_functions.h>
-
-#include <pga/core/ShapeGenerator.cuh>
-#include "TriangleMeshData.h"
 #include "InstancedTriangleMeshData.h"
 #include "RenderingGlobalVariables.cuh"
 #include "ShapeMeshAttributes.cuh"
+#include "TriangleMeshData.h"
+
+#include <cuda_runtime_api.h>
+#include <pga/core/ShapeGenerator.cuh>
+#include <vector_functions.h>
+
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {

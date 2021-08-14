@@ -1,11 +1,12 @@
 #pragma once
 
-#include <climits>
-#include <cuda_runtime_api.h>
-
+#include "CUDAException.h"
 #include "GlobalConstants.h"
 #include "GlobalVariables.cuh"
-#include "CUDAException.h"
+
+#include <cuda_runtime_api.h>
+
+#include <climits>
 
 namespace PGA
 {

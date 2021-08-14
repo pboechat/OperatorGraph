@@ -1,21 +1,19 @@
 #define PGA_CORE_EXPORT 0
 #define PGA_RENDERING_EXPORT 0
 
-#include <string.h>
-#include <stdexcept>
 
 // NOTE: DebugFlags.h have to come before Core.h because of partial template specializations!
 #include "DebugFlags.h"
+#include "PGAFacade.h"
+#include "SceneSelector.cuh"
+#include "SceneUtils.cuh"
 
 #include <pga/core/Core.h>
 #include <pga/core/GPUTechnique.h>
 #include <pga/rendering/GenerationFunctions.cuh>
 
-#include "SceneUtils.cuh"
-#include "PGAFacade.h"
-
-//////////////////////////////////////////////////////////////////////////
-#include "SceneSelector.cuh"
+#include <stdexcept>
+#include <string.h>
 
 namespace Test
 {
@@ -23,7 +21,6 @@ namespace Test
 
 }
 
-//////////////////////////////////////////////////////////////////////////
 unsigned int g_attributeIndex = 0;
 
 std::string getTestName()
@@ -106,7 +103,6 @@ bool isInstrumented()
 	return Test::Instrumented;
 }
 
-//////////////////////////////////////////////////////////////////////////
 struct Configuration
 {
 #if defined(PGA_CPU)
@@ -123,7 +119,6 @@ typedef PGA::SinglePhaseEvaluator<Test::ProcedureList, Test::AxiomGenerator, PGA
 typedef std::unique_ptr<Evaluator, PGA::ReleaseCallback> EvaluatorPtr;
 EvaluatorPtr g_evaluator;
 
-//////////////////////////////////////////////////////////////////////////
 void initializePGA()
 {
 	g_evaluator = EvaluatorPtr(new Evaluator());

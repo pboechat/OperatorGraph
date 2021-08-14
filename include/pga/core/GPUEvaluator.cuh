@@ -1,28 +1,28 @@
 #pragma once
 
-#include <memory>
-#include <cuda_runtime_api.h>
+#include "CUDAException.h"
+#include "DebugFlags.h"
+#include "Discard.cuh"
+#include "DispatchTableEntry.h"
+#include "GPUBVHConstructor.cuh"
+#include "GPUTechnique.h"
+#include "GlobalVariables.cuh"
+#include "Instrumentation.cuh"
+#include "IntermediateSymbolsBufferAdapter.cuh"
+#include "ShapeGenerator.cuh"
+#include "Statistics.h"
+#include "Symbol.cuh"
+#include "TStdLib.h"
 
-#include <techniqueKernels.cuh>
-#include <techniqueDynamicParallelism.cuh>
-#include <techniqueMegakernel.cuh>
+#include <cuda_runtime_api.h>
 #include <queueDistLocks.cuh>
 #include <queueShared.cuh>
 #include <queuingPerProc.cuh>
+#include <techniqueDynamicParallelism.cuh>
+#include <techniqueKernels.cuh>
+#include <techniqueMegakernel.cuh>
 
-#include "DebugFlags.h"
-#include "CUDAException.h"
-#include "Statistics.h"
-#include "DispatchTableEntry.h"
-#include "GlobalVariables.cuh"
-#include "Symbol.cuh"
-#include "GPUBVHConstructor.cuh"
-#include "IntermediateSymbolsBufferAdapter.cuh"
-#include "ShapeGenerator.cuh"
-#include "Discard.cuh"
-#include "TStdLib.h"
-#include "GPUTechnique.h"
-#include "Instrumentation.cuh"
+#include <memory>
 
 #define SAME_SHAPES() \
 	T::EqualTypes<ShapeT, typename GetSymbolShape<typename ProcedureListT::ItemAt<LengthT - 1>::Result::ExpectedData>::Result>::Result
@@ -31,7 +31,6 @@ namespace PGA
 {
 	namespace GPU
 	{
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename Procedure>
 		struct SharedQueueTraits
 		{
@@ -39,7 +38,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <template <class> class QueueT, typename ProcInfoT, typename CustomTypeT, Technique Technique>
 		struct GetTechniqueType;
 
@@ -71,7 +69,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <Technique Technique, typename ProcInfoT, unsigned int QueueSizeT, unsigned int MaxSharedMemoryT>
 		struct QueueSelector
 		{
@@ -92,7 +89,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <Technique TechniqueT, typename ProcInfoT1, typename CustomTypeT, unsigned int QueueSizeT, unsigned int MaxSharedMemoryT, bool UseInstrumentationT /* false */, unsigned int NumSubgraphsT, unsigned int NumEdgesT>
 		struct AbstractTechniqueFactory
 		{
@@ -127,7 +123,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename ListT, unsigned int CountT>
 		struct ProcInfoListBuilder_Iterator
 		{
@@ -162,7 +157,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename ProcedureListT, unsigned int LengthT>
 		struct ProcedureMatcher
 		{
@@ -342,7 +336,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template <typename AxiomGeneratorT, typename SymbolManagerT>
 		struct InitFunc
 		{
@@ -356,7 +349,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		class Evaluator
 		{
 		protected:
@@ -390,7 +382,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		struct DefaultConfiguration
 		{
 			static const PGA::GPU::Technique Technique = PGA::GPU::Technique::MEGAKERNEL;
@@ -399,7 +390,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template
 		<
 			typename ProcedureListT,
@@ -482,7 +472,6 @@ namespace PGA
 
 		};
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
 		template
 		<
 			typename ProcedureListT,

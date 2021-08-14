@@ -1,6 +1,5 @@
 #include "CommonGraphOperations.h"
 
-//////////////////////////////////////////////////////////////////////////
 struct VerticesSharedByCutEdges : PGA::Compiler::GraphVisitor
 {
 	const std::set<size_t>& alwaysCutEdges;
@@ -22,7 +21,6 @@ struct VerticesSharedByCutEdges : PGA::Compiler::GraphVisitor
 
 };
 
-//////////////////////////////////////////////////////////////////////////
 void enforceR3(PGA::Compiler::Graph& graph, std::set<size_t>& cutEdges)
 {
 	std::set<size_t> vertices;

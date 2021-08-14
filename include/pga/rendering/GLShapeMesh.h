@@ -1,28 +1,25 @@
 #pragma once
 
-#include <cassert>
-#include <vector>
-#include <memory>
-#include <stdexcept>
-#include <driver_types.h>
-#ifdef _WIN32
-#include <windows.h>
-#endif
-#include <GL/glew.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
-#include <pga/core/Shapes.cuh>
-#include <pga/core/ShapeGenerator.cuh>
-#include <pga/core/TStdLib.h>
-
+#include "GLException.h"
+#include "GLInstancedTriangleMeshSource.h"
+#include "InstancedTriangleMeshData.h"
 #include "RenderingConstants.h"
 #include "ShapeMeshAttributes.cuh"
 #include "TriangleMeshData.h"
-#include "InstancedTriangleMeshData.h"
-#include "GLInstancedTriangleMeshSource.h"
-#include "GLException.h"
+
+#include <GL/glew.h>
+#include <driver_types.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+#include <pga/core/ShapeGenerator.cuh>
+#include <pga/core/Shapes.cuh>
+#include <pga/core/TStdLib.h>
+#include <windows.h>
+
+#include <cassert>
+#include <memory>
+#include <stdexcept>
+#include <vector>
 
 namespace PGA
 {

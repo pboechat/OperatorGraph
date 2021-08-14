@@ -1,18 +1,17 @@
 #pragma once
 
-#include <map>
-#include <set>
-#include <memory>
-#include <ostream>
-
 #include <pga/compiler/Parameters.h>
 #include <pga/compiler/Vertex.h>
+
+#include <map>
+#include <memory>
+#include <ostream>
+#include <set>
 
 namespace PGA
 {
 	namespace Compiler
 	{
-		//////////////////////////////////////////////////////////////////////////
 		struct Edge
 		{
 			size_t index;
@@ -29,7 +28,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		struct Edge_LW
 		{
 			size_t in;

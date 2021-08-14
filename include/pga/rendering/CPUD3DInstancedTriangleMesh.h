@@ -1,9 +1,9 @@
 #pragma once
 
-#include <memory>
-
 #include "D3DBaseInstancedTriangleMesh.h"
 #include "D3DInstancedTriangleMeshSource.h"
+
+#include <memory>
 
 namespace PGA
 {

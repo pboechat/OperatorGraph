@@ -1,11 +1,11 @@
 #pragma once
 
-#include <memory>
-#include <vector>
-
-#include <pga/compiler/ShapeType.h>
 #include <pga/compiler/OperatorType.h>
 #include <pga/compiler/Parameters.h>
+#include <pga/compiler/ShapeType.h>
+
+#include <memory>
+#include <vector>
 
 namespace PGA
 {

@@ -1,10 +1,10 @@
-#include <chrono>
-#include <algorithm>
-#include <stdexcept>
-
+#include <pga/compiler/Context.h>
 #include <pga/compiler/Operator.h>
 #include <pga/compiler/Symbol.h>
-#include <pga/compiler/Context.h>
+
+#include <algorithm>
+#include <chrono>
+#include <stdexcept>
 
 namespace PGA
 {

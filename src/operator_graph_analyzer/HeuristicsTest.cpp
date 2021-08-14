@@ -1,9 +1,8 @@
+#include "HeuristicsTest.h"
+
 #include <cmath>
 #include <iostream>
 
-#include "HeuristicsTest.h"
-
-//////////////////////////////////////////////////////////////////////////
 HeuristicsSamplesTester::HeuristicsSamplesTester(bool matchGroups, const std::set<size_t>& alwaysCutEdges, const std::set<size_t>& neverCutEdges, PGA::Compiler::Graph::ComputePartitionCallback& callback, PGA::Compiler::Graph& graph) :
 	matchGroups(matchGroups),
 	alwaysCutEdges(alwaysCutEdges),
@@ -94,7 +93,6 @@ bool HeuristicsSamplesTester::isInvalid(PGA::Compiler::Graph::PartitionPtr& part
 	return false;
 }
 
-//////////////////////////////////////////////////////////////////////////
 HeuristicsTestSpecifications::HeuristicsTestSpecifications(double errorMargin, ConfidenceLevel confidenceLevel, double standardDeviation) : errorMargin(errorMargin), confidenceLevel(confidenceLevel), standardDeviation(standardDeviation)
 {
 }

@@ -1,14 +1,14 @@
 #pragma once
 
-#include <memory>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <pga/core/CUDAException.h>
-
+#include "InstancedTriangleMeshData.h"
 #include "RenderingConstants.h"
 #include "TriangleMeshData.h"
-#include "InstancedTriangleMeshData.h"
+
+#include <cuda_runtime_api.h>
+#include <pga/core/CUDAException.h>
+
+#include <memory>
+#include <stdexcept>
 
 #if defined(PGA_RENDERING_EXPORT)
 #    if (PGA_RENDERING_EXPORT == 1)

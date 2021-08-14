@@ -1,17 +1,17 @@
 #pragma once
 
-#include <vector>
-#include <string>
-#include <memory>
-#include <d3d11.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
 #include "D3DInstancedTriangleMeshSource.h"
-// NOTE: https://github.com/syoyo/tinyobjloader
 #include "tiny_obj_loader.h"
 
+#include <d3d11.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+
+#include <memory>
+#include <string>
+#include <vector>
+
+// NOTE: https://github.com/syoyo/tinyobjloader
 namespace PGA
 {
 	namespace Rendering

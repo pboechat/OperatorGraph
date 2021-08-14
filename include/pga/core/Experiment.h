@@ -1,15 +1,16 @@
 #pragma once
 
-#include <vector>
-#include <limits>
-#include <string>
-#include <algorithm>
-#include <iostream>
+#include "CUDAException.h"
+#include "CUPTIException.h"
+
 #include <cuda.h>
 #include <cupti.h>
 
-#include "CUDAException.h"
-#include "CUPTIException.h"
+#include <algorithm>
+#include <iostream>
+#include <limits>
+#include <string>
+#include <vector>
 
 #define getDeviceAttribute(__var, __device, __attribute) \
 	{ \
@@ -194,7 +195,6 @@ namespace PGA
 
 		}
 
-		//////////////////////////////////////////////////////////////////////////
 		class Experiment
 		{
 		private:

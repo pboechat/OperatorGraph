@@ -1,13 +1,13 @@
+#include <pga/core/CUDAException.h>
+#include <pga/rendering/GLBaseTriangleMesh.h>
+#include <pga/rendering/GLException.h>
+#include <pga/rendering/InstancedTriangleMeshData.h>
+#include <pga/rendering/RenderingConstants.h>
+
 #include <cassert>
 #include <cstdio>
 #include <cstring>
 #include <stdexcept>
-
-#include <pga/core/CUDAException.h>
-#include <pga/rendering/GLException.h>
-#include <pga/rendering/RenderingConstants.h>
-#include <pga/rendering/GLBaseTriangleMesh.h>
-#include <pga/rendering/InstancedTriangleMeshData.h>
 
 namespace PGA
 {

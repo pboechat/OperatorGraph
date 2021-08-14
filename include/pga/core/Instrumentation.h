@@ -1,16 +1,16 @@
 #pragma once
 
-#include <cstdint>
-#include <vector>
-#include <map>
-#include <string>
-#include <iostream>
-#include <cuda_runtime.h>
+#include "CUDAException.h"
 
 #include <cuda_memory.h>
+#include <cuda_runtime.h>
 #include <techniqueInterface.h>
 
-#include "CUDAException.h"
+#include <cstdint>
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
 
 namespace PGA
 {

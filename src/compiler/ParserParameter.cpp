@@ -1,12 +1,11 @@
-#include <stdexcept>
-#include <algorithm>
+#include "ParserParameter.h"
 
 #include <boost/variant/get.hpp>
-
 #include <pga/core/Axis.h>
 #include <pga/core/RepeatMode.h>
 
-#include "ParserParameter.h"
+#include <algorithm>
+#include <stdexcept>
 
 namespace PGA
 {
@@ -14,13 +13,11 @@ namespace PGA
 	{
 		namespace Parser
 		{
-			//////////////////////////////////////////////////////////////////////////
 			std::shared_ptr<PGA::Compiler::Parameter> createParameter(Parameter param)
 			{
 				return createParameter(param, {}, {});
 			}
 
-			//////////////////////////////////////////////////////////////////////////
 			std::shared_ptr<PGA::Compiler::Parameter> createParameter(Parameter param,
 				const std::initializer_list<int>& allowed,
 				const std::initializer_list<int>& forbidden)

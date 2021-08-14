@@ -1,17 +1,17 @@
 #pragma once
 
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
+#include "Call.cuh"
 #include "GlobalVariables.cuh"
 #include "Symbol.cuh"
-#include "Call.cuh"
+
+#include <cuda_runtime_api.h>
+
+#include <stdexcept>
 
 namespace PGA
 {
 	namespace Operators
 	{
-		//////////////////////////////////////////////////////////////////////////
 		template <typename T>
 		class SymbolDecorator
 		{
@@ -26,7 +26,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int OperationCode, unsigned int SuccessorOffset, int EdgeIndex>
 		class SymbolDecorator < PSCall<OperationCode, SuccessorOffset, EdgeIndex> >
 		{
@@ -64,7 +63,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int OperationCode, int EdgeIndex, int EntryIndex>
 		class SymbolDecorator < FSCall<OperationCode, EdgeIndex, EntryIndex> >
 		{
@@ -83,7 +81,6 @@ namespace PGA
 
 		};
 
-		//////////////////////////////////////////////////////////////////////////
 		template <unsigned int SuccessorOffset, int EdgeIndex>
 		class SymbolDecorator < DCall<SuccessorOffset, EdgeIndex> >
 		{

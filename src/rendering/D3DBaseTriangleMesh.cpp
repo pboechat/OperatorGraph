@@ -1,12 +1,12 @@
+#include <pga/rendering/D3DBaseTriangleMesh.h>
+#include <pga/rendering/D3DException.h>
+#include <pga/rendering/InstancedTriangleMeshData.h>
+#include <pga/rendering/RenderingConstants.h>
+
 #include <cassert>
 #include <cstdio>
 #include <cstring>
 #include <stdexcept>
-
-#include <pga/rendering/RenderingConstants.h>
-#include <pga/rendering/InstancedTriangleMeshData.h>
-#include <pga/rendering/D3DBaseTriangleMesh.h>
-#include <pga/rendering/D3DException.h>
 
 namespace PGA
 {

@@ -1,9 +1,9 @@
 #pragma once
 
+#include "ParserElement.h"
+
 #include <string>
 #include <vector>
-
-#include "ParserElement.h"
 
 namespace PGA
 {

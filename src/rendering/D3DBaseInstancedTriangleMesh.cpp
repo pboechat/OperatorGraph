@@ -1,6 +1,6 @@
-#include <stdexcept>
-
 #include <pga/rendering/D3DBaseInstancedTriangleMesh.h>
+
+#include <stdexcept>
 
 namespace PGA
 {

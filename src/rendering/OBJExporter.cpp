@@ -1,8 +1,8 @@
-#include <stdexcept>
-#include <sstream>
-#include <iomanip>
+#include <pga/rendering/OBJExporter.h>
 
-#include "../include/pga/rendering/OBJExporter.h"
+#include <iomanip>
+#include <sstream>
+#include <stdexcept>
 
 namespace PGA
 {

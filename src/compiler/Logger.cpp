@@ -1,12 +1,12 @@
 #include <pga/compiler/Logger.h>
 
-#include <stdarg.h>
+#include <algorithm>
 #include <cstdio>
-#include <string>
+#include <iostream>
 #include <map>
 #include <sstream>
-#include <iostream>
-#include <algorithm>
+#include <stdarg.h>
+#include <string>
 
 namespace PGA
 {

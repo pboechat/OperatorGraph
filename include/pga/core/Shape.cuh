@@ -1,13 +1,13 @@
 #pragma once
 
-#include <string>
-#include <stdexcept>
-#include <cuda_runtime_api.h>
-
-#include <math/vector.h>
-#include <math/matrix.h>
-
 #include "Random.cuh"
+
+#include <cuda_runtime_api.h>
+#include <math/matrix.h>
+#include <math/vector.h>
+
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {

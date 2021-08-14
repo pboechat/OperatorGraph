@@ -1,9 +1,8 @@
-#include <boost/variant/get.hpp>
-
-#include <pga/core/ParameterType.h>
-
-#include "ParserOperand.h"
 #include "ParserExpression.h"
+#include "ParserOperand.h"
+
+#include <boost/variant/get.hpp>
+#include <pga/core/ParameterType.h>
 
 namespace PGA
 {

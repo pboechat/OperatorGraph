@@ -1,29 +1,26 @@
 #pragma once
 
-#include <memory>
-#include <string>
-#include <vector>
-#include <random>
-#include <chrono>
-#include <windows.h>
-
-#include <math/vector.h>
-#include <pga/rendering/Generator.h>
-#include <pga/rendering/Configuration.h>
-#include <pga/rendering/Material.h>
-#include <pga/rendering/TriangleMesh.h>
-#include <pga/rendering/InstancedTriangleMesh.h>
-
 #include "Camera.h"
 #include "LogManager.h"
 
-//////////////////////////////////////////////////////////////////////////
+#include <math/vector.h>
+#include <pga/rendering/Configuration.h>
+#include <pga/rendering/Generator.h>
+#include <pga/rendering/InstancedTriangleMesh.h>
+#include <pga/rendering/Material.h>
+#include <pga/rendering/TriangleMesh.h>
+#include <windows.h>
+
+#include <chrono>
+#include <memory>
+#include <random>
+#include <string>
+#include <vector>
+
 int main(unsigned int argc, const char** argv);
 
-//////////////////////////////////////////////////////////////////////////
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-//////////////////////////////////////////////////////////////////////////
 class TestRunnerApp
 {
 public:

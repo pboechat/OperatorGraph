@@ -1,10 +1,10 @@
 #pragma once
 
-#include <string>
-#include <stdexcept>
-
 #include "OperatorType.h"
 #include "ShapeType.h"
+
+#include <stdexcept>
+#include <string>
 
 namespace PGA
 {

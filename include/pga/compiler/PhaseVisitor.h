@@ -1,12 +1,12 @@
 #pragma once
 
-#include <map>
-#include <vector>
-#include <string>
-
-#include <pga/compiler/GraphVisitor.h>
 #include <pga/compiler/Edge.h>
+#include <pga/compiler/GraphVisitor.h>
 #include <pga/compiler/Vertex.h>
+
+#include <map>
+#include <string>
+#include <vector>
 
 namespace PGA
 {

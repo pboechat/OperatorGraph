@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
-
 #include <math/vector.h>
+
+#include <vector>
 
 namespace PGA
 {
