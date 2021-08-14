@@ -2,6 +2,10 @@
 
 #include "Image.h"
 
+#include <d3d11.h>
+
+#include <string>
+
 namespace PGA
 {
 	namespace Rendering

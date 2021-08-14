@@ -5,6 +5,7 @@
 #include <cuda_runtime_api.h>
 #include <pga/core/Core.h>
 #include <pga/core/Grid.cuh>
+#include <pga/core/GPUTechnique.h>
 
 #include <map>
 #include <string>
