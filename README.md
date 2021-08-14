@@ -2,7 +2,7 @@ OperatorGraph
 =============
 
 
-**OperatorGraph** is the reference implementation for the ideas exposed in the paper [Representing and Scheduling Procedural Generation using Operator Graphs](http://www.pedroboechat.com/publications/representing_and_scheduling_procedural_generation_using_operator_graphs.pdf).
+**OperatorGraph** is the reference implementation for the ideas exposed in the paper [Representing and Scheduling Procedural Generation using Operator Graphs](http://www.pedroboechat.com/publications/operator_graph.pdf).
 
 
 [![ScreenShot](http://www.pedroboechat.com/images/OperatorGraph-video-thumbnail.png)](https://www.youtube.com/embed/CvAlSffwB18?list=PLgV_NS3scu1yDnjMd8m-hLoRgG8Ql7xWN)
