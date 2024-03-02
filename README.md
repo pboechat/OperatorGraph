@@ -2,10 +2,10 @@ OperatorGraph
 =============
 
 
-**OperatorGraph** is the reference implementation for the ideas exposed in the paper [Representing and Scheduling Procedural Generation using Operator Graphs](http://www.pedroboechat.com/publications/operator_graph.pdf).
+**OperatorGraph** is the reference implementation for the ideas exposed in the paper [Representing and Scheduling Procedural Generation using Operator Graphs](http://pedroboechat.com/publications/operator_graph.pdf).
 
 
-[![ScreenShot](http://www.pedroboechat.com/images/OperatorGraph-video-thumbnail.png)](https://www.youtube.com/embed/CvAlSffwB18?list=PLgV_NS3scu1yDnjMd8m-hLoRgG8Ql7xWN)
+[![ScreenShot](http://pedroboechat.com/images/OperatorGraph-video-thumbnail.png)](https://www.youtube.com/embed/CvAlSffwB18?list=PLgV_NS3scu1yDnjMd8m-hLoRgG8Ql7xWN)
 
 It's essentially a toolkit that offers an end-to-end solution to compile shape grammars as programs that efficiently run on CUDA enabled GPUs.
 
@@ -43,7 +43,7 @@ or the equivalent grammar in the __PGA-shape__  DSL:
 
 Both resulting in the following Menger sponge:
 
-![Menger Sponge](http://www.pedroboechat.com/images/operator-graph-menger-sponge.png)
+![Menger Sponge](http://pedroboechat.com/images/operator-graph-menger-sponge.png)
 
 Grammars written in the C++/CUDA idiom can be linked to OpenGL/Direct3D applications,
 while grammars written in the DSL can be embedded with the interpreter. 
